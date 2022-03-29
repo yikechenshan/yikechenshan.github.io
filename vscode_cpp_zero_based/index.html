@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"yikechenshan.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="这篇还是写给比我还小白的小白看的，步骤可以说是很详细了，要不是录视频说话属实感觉太尬，直接录个视频其实比这个省事多了。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VSCode的C++环境基础配置【零基础版】">
+<meta property="og:url" content="http://yikechenshan.github.io/vscode_cpp_zero_based/index.html">
+<meta property="og:site_name" content="平凡的博客">
+<meta property="og:description" content="这篇还是写给比我还小白的小白看的，步骤可以说是很详细了，要不是录视频说话属实感觉太尬，直接录个视频其实比这个省事多了。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://img.jinxinsong.cn/20201022185135.png">
+<meta property="og:image" content="http://img.jinxinsong.cn/20201022185303.png">
+<meta property="og:image" content="http://img.jinxinsong.cn/20201022185409.png">
+<meta property="og:image" content="http://img.jinxinsong.cn/20201022185518.png">
+<meta property="og:image" content="http://img.jinxinsong.cn/20201022185859.png">
+<meta property="og:image" content="http://img.jinxinsong.cn/20201022190012.png">
+<meta property="og:image" content="http://img.jinxinsong.cn/20201022190245.png">
+<meta property="og:image" content="http://img.jinxinsong.cn/20201022190610.png">
+<meta property="og:image" content="http://img.jinxinsong.cn/20201022190659.png">
+<meta property="og:image" content="http://img.jinxinsong.cn/20201022190746.png">
+<meta property="og:image" content="http://img.jinxinsong.cn/20201022190940.png">
+<meta property="og:image" content="http://img.jinxinsong.cn/20201022191053.png">
+<meta property="og:image" content="http://img.jinxinsong.cn/20201022191137.png">
+<meta property="og:image" content="http://img.jinxinsong.cn/20201022191524.png">
+<meta property="og:image" content="http://img.jinxinsong.cn/20201022191611.png">
+<meta property="og:image" content="http://img.jinxinsong.cn/20201022191828.png">
+<meta property="og:image" content="http://img.jinxinsong.cn/20201022191917.png">
+<meta property="og:image" content="http://img.jinxinsong.cn/20201022192013.png">
+<meta property="og:image" content="http://img.jinxinsong.cn/20201022192057.png">
+<meta property="og:image" content="http://img.jinxinsong.cn/20201022192401.png">
+<meta property="og:image" content="http://img.jinxinsong.cn/20201022192455.png">
+<meta property="og:image" content="http://img.jinxinsong.cn/20201022192553.png">
+<meta property="og:image" content="http://img.jinxinsong.cn/20201022192634.png">
+<meta property="og:image" content="http://img.jinxinsong.cn/20201022192729.png">
+<meta property="og:image" content="http://img.jinxinsong.cn/20201022192807.png">
+<meta property="og:image" content="http://img.jinxinsong.cn/20201022192850.png">
+<meta property="og:image" content="http://img.jinxinsong.cn/20201022193218.png">
+<meta property="og:image" content="http://img.jinxinsong.cn/20201022193258.png">
+<meta property="og:image" content="http://img.jinxinsong.cn/20201022193349.png">
+<meta property="og:image" content="http://img.jinxinsong.cn/20201022193455.png">
+<meta property="og:image" content="http://img.jinxinsong.cn/20201022193542.png">
+<meta property="og:image" content="http://img.jinxinsong.cn/20201022193702.png">
+<meta property="og:image" content="http://img.jinxinsong.cn/20201022193741.png">
+<meta property="og:image" content="http://img.jinxinsong.cn/20201022193841.png">
+<meta property="og:image" content="http://img.jinxinsong.cn/20201022193922.png">
+<meta property="og:image" content="http://img.jinxinsong.cn/20201022194036.png">
+<meta property="og:image" content="http://img.jinxinsong.cn/20201022194115.png">
+<meta property="og:image" content="http://img.jinxinsong.cn/20201022194159.png">
+<meta property="og:image" content="http://img.jinxinsong.cn/20201022194235.png">
+<meta property="og:image" content="http://img.jinxinsong.cn/20201022194318.png">
+<meta property="og:image" content="http://img.jinxinsong.cn/20201022194355.png">
+<meta property="og:image" content="http://img.jinxinsong.cn/20201022194438.png">
+<meta property="og:image" content="http://img.jinxinsong.cn/20201022194537.png">
+<meta property="og:image" content="http://img.jinxinsong.cn/20201022194626.png">
+<meta property="og:image" content="http://img.jinxinsong.cn/20201022194659.png">
+<meta property="og:image" content="http://img.jinxinsong.cn/20201022194732.png">
+<meta property="og:image" content="http://img.jinxinsong.cn/20201022195703.png">
+<meta property="og:image" content="http://img.jinxinsong.cn/20201022195743.png">
+<meta property="og:image" content="http://img.jinxinsong.cn/20201022195824.png">
+<meta property="og:image" content="http://img.jinxinsong.cn/20201022200230.png">
+<meta property="og:image" content="http://img.jinxinsong.cn/20201022200310.png">
+<meta property="og:image" content="http://img.jinxinsong.cn/20201022200345.png">
+<meta property="og:image" content="http://img.jinxinsong.cn/20201022200518.png">
+<meta property="og:image" content="http://img.jinxinsong.cn/20201022200559.png">
+<meta property="og:image" content="http://img.jinxinsong.cn/20201022200630.png">
+<meta property="og:image" content="http://img.jinxinsong.cn/20201022200724.png">
+<meta property="og:image" content="http://img.jinxinsong.cn/20201022200818.png">
+<meta property="og:image" content="http://img.jinxinsong.cn/20201022200914.png">
+<meta property="og:image" content="http://img.jinxinsong.cn/20201022200956.png">
+<meta property="og:image" content="http://img.jinxinsong.cn/20201022201052.png">
+<meta property="og:image" content="http://img.jinxinsong.cn/20201022201127.png">
+<meta property="og:image" content="http://img.jinxinsong.cn/20201022201205.png">
+<meta property="article:published_time" content="2020-10-07T14:20:00.000Z">
+<meta property="article:modified_time" content="2020-12-07T14:21:47.000Z">
+<meta property="article:author" content="一刻陈杉">
+<meta property="article:tag" content="c++">
+<meta property="article:tag" content="vscode">
+<meta property="article:tag" content="工具">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://img.jinxinsong.cn/20201022185135.png">
+
+
+<link rel="canonical" href="http://yikechenshan.github.io/vscode_cpp_zero_based/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://yikechenshan.github.io/vscode_cpp_zero_based/","path":"vscode_cpp_zero_based/","title":"VSCode的C++环境基础配置【零基础版】"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>VSCode的C++环境基础配置【零基础版】 | 平凡的博客</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">平凡的博客</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#VSCode%E7%9A%84C-%E7%8E%AF%E5%A2%83%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE"><span class="nav-number">1.</span> <span class="nav-text">VSCode的C++环境基础配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A3%B0%E6%98%8E"><span class="nav-number">1.1.</span> <span class="nav-text">声明:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2"><span class="nav-number">1.2.</span> <span class="nav-text">一、写在前面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E6%AD%A5%E9%AA%A4"><span class="nav-number">1.3.</span> <span class="nav-text">二、安装配置步骤:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E5%AE%89%E8%A3%85%E7%BC%96%E8%AF%91%E5%99%A8"><span class="nav-number">1.3.1.</span> <span class="nav-text">2.1 安装编译器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-1-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%AE%89%E8%A3%85%E7%BC%96%E8%AF%91%E5%99%A8"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">2.1.1 为什么要安装编译器?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-2-%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">2.1.2 安装过程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-2-1-%E4%B8%8B%E8%BD%BD"><span class="nav-number">1.3.1.2.1.</span> <span class="nav-text">2.1.2.1 下载</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#2-1-2-1-1-%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E8%BE%93%E5%85%A5%E7%BD%91%E5%9D%80%E2%80%9Cmingw-w64-org%E2%80%9D%E5%B9%B6%E6%8C%89%E5%9B%9E%E8%BD%A6%EF%BC%8C%E8%BF%9B%E5%85%A5%E5%AE%98%E7%BD%91%EF%BC%8C%E5%B9%B6%E7%82%B9%E5%87%BB-%E3%80%90downloads%E3%80%91"><span class="nav-number">1.3.1.2.1.1.</span> <span class="nav-text">2.1.2.1.1 在浏览器中输入网址“mingw-w64.org”并按回车，进入官网，并点击 【downloads】</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-1-2-1-2-%E8%B7%B3%E8%BD%AC%E5%88%B0%E7%9A%84%E9%A1%B5%E9%9D%A2%E4%B8%8B%E6%8B%89%E5%88%B0%E5%A6%82%E5%9B%BE%E6%89%80%E7%A4%BA%E7%9A%84%E4%BD%8D%E7%BD%AE%EF%BC%8C%E7%82%B9%E5%87%BB%E3%80%90SourceForge%E3%80%91%E3%80%82"><span class="nav-number">1.3.1.2.1.2.</span> <span class="nav-text">2.1.2.1.2 跳转到的页面下拉到如图所示的位置，点击【SourceForge】。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-1-2-1-3-%E8%B7%B3%E8%BD%AC%E5%88%B0%E7%9A%84%E9%A1%B5%E9%9D%A2%E4%B8%8B%E6%8B%89%E5%88%B0%E5%A6%82%E5%9B%BE%E6%89%80%E7%A4%BA%E7%9A%84%E4%BD%8D%E7%BD%AE%EF%BC%8C%E7%82%B9%E5%87%BB%E3%80%90x86-64-posix-seh%E3%80%91%E3%80%82"><span class="nav-number">1.3.1.2.1.3.</span> <span class="nav-text">2.1.2.1.3 跳转到的页面下拉到如图所示的位置，点击【x86_64-posix-seh】。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-1-2-1-4-%E7%AD%89%E5%BE%85%E7%BD%91%E7%AB%99%E8%B7%B3%E8%BD%AC%EF%BC%8C%E7%82%B9%E5%87%BB%E3%80%90%E4%BF%9D%E5%AD%98%E3%80%91%E3%80%82"><span class="nav-number">1.3.1.2.1.4.</span> <span class="nav-text">2.1.2.1.4 等待网站跳转，点击【保存】。</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-2-2-%E5%AE%89%E8%A3%85"><span class="nav-number">1.3.1.2.2.</span> <span class="nav-text">2.1.2.2 安装</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#2-1-2-2-1-%E6%89%BE%E5%88%B0%E4%B8%8B%E8%BD%BD%E7%9A%84%E6%96%87%E4%BB%B6%EF%BC%8C%E8%BF%9B%E8%A1%8C%E8%A7%A3%E5%8E%8B%E3%80%82-%E8%A7%A3%E5%8E%8B%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E8%A7%81%E6%96%87%E6%A1%A3%E8%A7%A3%E5%8E%8B%E7%BC%A9%E8%BD%AF%E4%BB%B6%E7%9A%84-%E9%80%89%E6%8B%A9%E4%B8%8E%E5%AE%89%E8%A3%85-%E3%80%82"><span class="nav-number">1.3.1.2.2.1.</span> <span class="nav-text">2.1.2.2.1 找到下载的文件，进行解压。(解压软件安装配置见文档解压缩软件的 选择与安装)。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-1-2-2-2-%E7%AD%89%E5%BE%85%E8%A7%A3%E5%8E%8B%E5%AE%8C%E6%88%90%E3%80%82"><span class="nav-number">1.3.1.2.2.2.</span> <span class="nav-text">2.1.2.2.2 等待解压完成。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-1-2-2-3-%E7%82%B9%E8%BF%9B%E8%A7%A3%E5%8E%8B%E5%BE%97%E5%88%B0%E7%9A%84%E6%96%87%E4%BB%B6%E5%A4%B9%E3%80%82"><span class="nav-number">1.3.1.2.2.3.</span> <span class="nav-text">2.1.2.2.3 点进解压得到的文件夹。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-1-2-2-4-%E5%A4%8D%E5%88%B6%E9%87%8C%E9%9D%A2%E7%9A%84%E6%96%87%E4%BB%B6%E5%A4%B9-%E5%8F%B3%E5%87%BB%E6%96%87%E4%BB%B6%E5%A4%B9%EF%BC%8C%E7%82%B9%E3%80%90%E5%A4%8D%E5%88%B6%E3%80%91-%E3%80%82"><span class="nav-number">1.3.1.2.2.4.</span> <span class="nav-text">2.1.2.2.4 复制里面的文件夹(右击文件夹，点【复制】)。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-1-2-2-5-%E8%BD%AC%E5%88%B0-C-%E7%9B%98%E4%B8%AD%E7%9A%84-Program-Files-%E6%96%87%E4%BB%B6%E5%A4%B9%EF%BC%8C%E7%A9%BA%E7%99%BD%E5%A4%84%E5%8F%B3%E5%87%BB%EF%BC%8C%E7%82%B9%E3%80%90%E7%B2%98%E8%B4%B4%E3%80%91%E3%80%82"><span class="nav-number">1.3.1.2.2.5.</span> <span class="nav-text">2.1.2.2.5 转到 C 盘中的 Program Files 文件夹，空白处右击，点【粘贴】。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-1-2-2-6-%E7%82%B9%E5%87%BB%E3%80%90%E7%BB%A7%E7%BB%AD%E3%80%91%EF%BC%8C%E7%AD%89%E5%BE%85%E5%A4%8D%E5%88%B6%E5%AE%8C%E6%88%90%E3%80%82"><span class="nav-number">1.3.1.2.2.6.</span> <span class="nav-text">2.1.2.2.6 点击【继续】，等待复制完成。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-1-2-2-7-%E5%8F%B3%E5%87%BB%E3%80%90%E6%AD%A4%E7%94%B5%E8%84%91%E3%80%91%EF%BC%8C%E7%82%B9%E5%87%BB%E3%80%90%E5%B1%9E%E6%80%A7%E3%80%91%E3%80%82"><span class="nav-number">1.3.1.2.2.7.</span> <span class="nav-text">2.1.2.2.7 右击【此电脑】，点击【属性】。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-1-2-2-8-%E7%82%B9%E5%87%BB%E3%80%90%E9%AB%98%E7%BA%A7%E7%B3%BB%E7%BB%9F%E8%AE%BE%E7%BD%AE%E3%80%91"><span class="nav-number">1.3.1.2.2.8.</span> <span class="nav-text">2.1.2.2.8 点击【高级系统设置】</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-1-2-2-9-%E7%82%B9%E5%87%BB%E3%80%90%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E3%80%91"><span class="nav-number">1.3.1.2.2.9.</span> <span class="nav-text">2.1.2.2.9 点击【环境变量】</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-1-2-2-10-%E5%9C%A8%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F%E4%B8%AD%E6%89%BE%E5%88%B0-Path%EF%BC%8C%E7%82%B9%E5%87%BB-Path-%E5%8F%98%E9%87%8F%EF%BC%8C%E5%86%8D%E7%82%B9%E3%80%90%E7%BC%96%E8%BE%91%E3%80%91%E3%80%82-%E6%88%96%E5%8F%8C%E5%87%BB-Path"><span class="nav-number">1.3.1.2.2.10.</span> <span class="nav-text">2.1.2.2.10 在系统变量中找到 Path，点击 Path 变量，再点【编辑】。(或双击 Path)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-1-2-2-11-%E7%82%B9%E5%87%BB%E3%80%90%E6%96%B0%E5%BB%BA%E3%80%91%EF%BC%8C%E8%BE%93%E5%85%A5%E3%80%90C-Program-Files-mingw64-bin%E3%80%91%EF%BC%8C%E7%82%B9%E5%87%BB%E3%80%90%E7%A1%AE%E5%AE%9A%E3%80%91%E3%80%82"><span class="nav-number">1.3.1.2.2.11.</span> <span class="nav-text">2.1.2.2.11 点击【新建】，输入【C:\Program Files\mingw64\bin】，点击【确定】。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-1-2-2-12-%E7%82%B9%E5%87%BB%E3%80%90%E7%A1%AE%E5%AE%9A%E3%80%91"><span class="nav-number">1.3.1.2.2.12.</span> <span class="nav-text">2.1.2.2.12 点击【确定】</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-1-2-2-13-%E7%82%B9%E5%87%BB%E3%80%90%E7%A1%AE%E5%AE%9A%E3%80%91"><span class="nav-number">1.3.1.2.2.13.</span> <span class="nav-text">2.1.2.2.13 点击【确定】</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-2-3-%E6%B5%8B%E8%AF%95-%E5%8F%AF%E5%81%9A%E5%8F%AF%E4%B8%8D%E5%81%9A"><span class="nav-number">1.3.1.2.3.</span> <span class="nav-text">2.1.2.3 测试(可做可不做)</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#2-1-2-3-1-%E5%90%8C%E6%97%B6%E6%8C%89%E4%B8%8B%E9%94%AE%E7%9B%98%E7%9A%84%E3%80%90win%E3%80%91%E5%92%8C%E3%80%90R%E3%80%91%E9%94%AE%EF%BC%8C%E5%91%BC%E5%87%BA%E8%BF%90%E8%A1%8C%E7%AA%97%E5%8F%A3%EF%BC%8C%E8%BE%93%E5%85%A5-cmd%EF%BC%8C%E7%82%B9%E3%80%90%E7%A1%AE-%E5%AE%9A%E3%80%91-%E6%88%96%E7%9B%B4%E6%8E%A5%E5%9B%9E%E8%BD%A6"><span class="nav-number">1.3.1.2.3.1.</span> <span class="nav-text">2.1.2.3.1 同时按下键盘的【win】和【R】键，呼出运行窗口，输入 cmd，点【确 定】(或直接回车)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-1-2-3-2-%E5%9C%A8%E5%91%BC%E5%87%BA%E7%9A%84%E9%BB%91%E6%A1%86%E4%B8%AD%E8%BE%93%E5%85%A5-gcc%EF%BC%8C%E5%9B%9E%E8%BD%A6%EF%BC%8C%E5%87%BA%E7%8E%B0%E4%B8%8B%E5%9B%BE%E6%89%80%E7%A4%BA%E6%96%87%E5%AD%97%E5%88%99%E9%85%8D%E7%BD%AE%E6%88%90%E5%8A%9F%E3%80%82"><span class="nav-number">1.3.1.2.3.2.</span> <span class="nav-text">2.1.2.3.2 在呼出的黑框中输入 gcc，回车，出现下图所示文字则配置成功。</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E5%AE%89%E8%A3%85-vscode"><span class="nav-number">1.3.2.</span> <span class="nav-text">2.2 安装 vscode</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-1-%E4%B8%8B%E8%BD%BD"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">2.2.1 下载</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-1-1-%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E8%BE%93%E5%85%A5%E7%BD%91%E5%9D%80-https-code-visualstudio-com-%E8%AE%BF%E9%97%AE%EF%BC%8C%E7%82%B9%E5%87%BB%E7%BA%A2%E6%A1%86%E4%BD%8D%E7%BD%AE%E3%80%82"><span class="nav-number">1.3.2.1.1.</span> <span class="nav-text">2.2.1.1 在浏览器中输入网址 https:&#x2F;&#x2F;code.visualstudio.com 访问，点击红框位置。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-1-2-%E7%82%B9%E5%87%BB%E3%80%90Other-downloads%E3%80%91"><span class="nav-number">1.3.2.1.2.</span> <span class="nav-text">2.2.1.2 点击【Other downloads】</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-1-3-%E7%82%B9%E5%87%BB-64-%E4%BD%8D%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E5%8C%85%E9%93%BE%E6%8E%A5%E3%80%82"><span class="nav-number">1.3.2.1.3.</span> <span class="nav-text">2.2.1.3 点击 64 位系统安装包链接。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-1-4-%E7%AD%89%E5%BE%85%E8%B7%B3%E8%BD%AC%E5%90%8E%E7%82%B9%E3%80%90%E4%BF%9D%E5%AD%98%E3%80%91%E3%80%82"><span class="nav-number">1.3.2.1.4.</span> <span class="nav-text">2.2.1.4 等待跳转后点【保存】。</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-2-%E5%AE%89%E8%A3%85"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">2.2.2 安装</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-2-1-%E6%89%BE%E5%88%B0%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85%E5%8C%85%E7%9A%84%E4%BD%8D%E7%BD%AE%EF%BC%8C%E5%8F%8C%E5%87%BB%E5%AE%89%E8%A3%85%E5%8C%85%E3%80%82"><span class="nav-number">1.3.2.2.1.</span> <span class="nav-text">2.2.2.1 找到下载安装包的位置，双击安装包。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-2-2-%E7%82%B9%E5%87%BB%E3%80%90%E6%98%AF%E3%80%91%E3%80%82"><span class="nav-number">1.3.2.2.2.</span> <span class="nav-text">2.2.2.2 点击【是】。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-2-3-%E9%80%89%E6%8B%A9%E3%80%90%E6%88%91%E5%90%8C%E6%84%8F%E6%AD%A4%E5%8D%8F%E8%AE%AE%E3%80%91%EF%BC%8C%E7%84%B6%E5%90%8E%E7%82%B9%E5%87%BB%E3%80%90%E4%B8%8B%E4%B8%80%E6%AD%A5%E3%80%91%E3%80%82"><span class="nav-number">1.3.2.2.3.</span> <span class="nav-text">2.2.2.3 选择【我同意此协议】，然后点击【下一步】。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-2-4-%E9%80%89%E6%8B%A9%E5%AE%89%E8%A3%85%E7%9A%84%E8%B7%AF%E5%BE%84-%E5%BB%BA%E8%AE%AE%E4%B8%8D%E5%8F%98-%EF%BC%8C%E7%84%B6%E5%90%8E%E7%82%B9%E5%87%BB%E3%80%90%E4%B8%8B%E4%B8%80%E6%AD%A5%E3%80%91%E3%80%82"><span class="nav-number">1.3.2.2.4.</span> <span class="nav-text">2.2.2.4 选择安装的路径(建议不变)，然后点击【下一步】。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-2-5-%E4%B8%8D%E5%8F%98%EF%BC%8C%E7%BB%A7%E7%BB%AD%E3%80%90%E4%B8%8B%E4%B8%80%E6%AD%A5%E3%80%91"><span class="nav-number">1.3.2.2.5.</span> <span class="nav-text">2.2.2.5 不变，继续【下一步】</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-2-6-%E5%85%A8%E9%83%A8%E5%8B%BE%E9%80%89%EF%BC%8C%E7%84%B6%E5%90%8E%E7%82%B9%E5%87%BB%E3%80%90%E4%B8%8B%E4%B8%80%E6%AD%A5%E3%80%91%E3%80%82"><span class="nav-number">1.3.2.2.6.</span> <span class="nav-text">2.2.2.6 全部勾选，然后点击【下一步】。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-2-7-%E7%82%B9%E5%87%BB%E3%80%90%E5%AE%89%E8%A3%85%E3%80%91%E3%80%82"><span class="nav-number">1.3.2.2.7.</span> <span class="nav-text">2.2.2.7 点击【安装】。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-2-8-%E7%82%B9%E5%87%BB%E3%80%90%E5%AE%8C%E6%88%90%E3%80%91%E3%80%82"><span class="nav-number">1.3.2.2.8.</span> <span class="nav-text">2.2.2.8 点击【完成】。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E9%85%8D%E7%BD%AE-VSCode"><span class="nav-number">1.3.3.</span> <span class="nav-text">2.3 配置 VSCode</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-1-%E6%B1%89%E5%8C%96-%E5%8F%AF%E5%81%9A%E5%8F%AF%E4%B8%8D%E5%81%9A"><span class="nav-number">1.3.3.1.</span> <span class="nav-text">2.3.1 汉化(可做可不做)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-1-1-%E7%82%B9%E5%87%BB%E7%BA%A2%E6%A1%86%E4%B8%AD%E7%9A%84%E5%9B%BE%E6%A0%87-%E6%8F%92%E4%BB%B6%E5%9B%BE%E6%A0%87"><span class="nav-number">1.3.3.1.1.</span> <span class="nav-text">2.3.1.1 点击红框中的图标(插件图标)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-1-2-%E8%BE%93%E5%85%A5%E3%80%90chinese%E3%80%91%EF%BC%8C%E7%82%B9%E5%87%BB%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%9A%84%E3%80%90install%E3%80%91%E3%80%82"><span class="nav-number">1.3.3.1.2.</span> <span class="nav-text">2.3.1.2 输入【chinese】，点击第一个的【install】。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-1-3-%E7%AD%89%E5%BE%85%E5%AE%89%E8%A3%85%E5%AE%8C%E6%AF%95%EF%BC%8C%E5%BC%B9%E5%87%BA%E5%BC%B9%E6%A1%86%EF%BC%8C%E7%82%B9%E5%87%BB%E3%80%90Restart-Now%E3%80%91%E9%87%8D%E5%90%AFVSCode%E3%80%82"><span class="nav-number">1.3.3.1.3.</span> <span class="nav-text">2.3.1.3 等待安装完毕，弹出弹框，点击【Restart Now】重启VSCode。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-1-4-%E9%87%8D%E5%90%AF%E4%B9%8B%E5%90%8E%E5%B0%B1%E6%98%AF%E4%B8%AD%E6%96%87%E7%95%8C%E9%9D%A2%E3%80%82"><span class="nav-number">1.3.3.1.4.</span> <span class="nav-text">2.3.1.4 重启之后就是中文界面。</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-2-%E9%85%8D%E7%BD%AE-C-x2F-C-%E7%8E%AF%E5%A2%83"><span class="nav-number">1.3.3.2.</span> <span class="nav-text">2.3.2 配置 C&#x2F;C++环境</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-2-1-%E7%82%B9%E5%87%BB%E7%BA%A2%E6%A1%86%E4%B8%AD%E7%9A%84%E5%9B%BE%E6%A0%87-%E6%8F%92%E4%BB%B6%E5%9B%BE%E6%A0%87"><span class="nav-number">1.3.3.2.1.</span> <span class="nav-text">2.3.2.1 点击红框中的图标(插件图标)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-2-2-%E8%BE%93%E5%85%A5%E3%80%90C%E3%80%91%EF%BC%8C%E7%82%B9%E5%87%BB%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%9A%84%E3%80%90%E5%AE%89%E8%A3%85%E3%80%91%E3%80%82"><span class="nav-number">1.3.3.2.2.</span> <span class="nav-text">2.3.2.2 输入【C】，点击第一个的【安装】。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-2-3-%E7%82%B9%E5%87%BB%E7%BA%A2%E6%A1%86%E4%B8%AD%E7%9A%84%E5%9B%BE%E6%A0%87"><span class="nav-number">1.3.3.2.3.</span> <span class="nav-text">2.3.2.3 点击红框中的图标</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-2-4-%E7%82%B9%E5%87%BB%E3%80%90%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6%E5%A4%B9%E3%80%91"><span class="nav-number">1.3.3.2.4.</span> <span class="nav-text">2.3.2.4 点击【打开文件夹】</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-2-5-%E8%87%AA%E5%B7%B1%E9%80%89%E4%B8%80%E4%B8%AA%E6%96%87%E4%BB%B6%E5%A4%B9%EF%BC%8C%E7%84%B6%E5%90%8E%E5%8F%B3%E5%87%BB%EF%BC%8C%E3%80%90%E6%96%B0%E5%BB%BA%E3%80%91%EF%BC%8C%E3%80%90%E6%96%87%E4%BB%B6%E5%A4%B9%E3%80%91%EF%BC%8C%E7%94%A8%E6%9D%A5%E5%AD%98%E6%94%BE%E4%BB%A5%E5%90%8E%E7%BC%96%E5%86%99-%E7%9A%84%E4%BB%A3%E7%A0%81%E3%80%82-%E5%BB%BA%E8%AE%AE%E7%9B%B4%E6%8E%A5%E5%9C%A8%E6%96%87%E6%A1%A3%E4%B8%AD%E6%96%B0%E5%BB%BA%EF%BC%8C%E5%8F%AF%E5%90%AC%E5%8F%AF%E4%B8%8D%E5%90%AC"><span class="nav-number">1.3.3.2.5.</span> <span class="nav-text">2.3.2.5 自己选一个文件夹，然后右击，【新建】，【文件夹】，用来存放以后编写 的代码。(建议直接在文档中新建，可听可不听)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-2-6-%E5%B0%86%E6%96%B0%E5%BB%BA%E7%9A%84%E6%96%87%E4%BB%B6%E5%A4%B9%E9%87%8D%E5%91%BD%E5%90%8D%EF%BC%8C%E4%B8%8D%E8%A6%81%E7%94%A8%E4%B8%AD%E6%96%87%E5%90%8D-%E5%8F%AF%E4%BB%A5%E5%86%99-CCode"><span class="nav-number">1.3.3.2.6.</span> <span class="nav-text">2.3.2.6 将新建的文件夹重命名，不要用中文名(可以写 CCode)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-2-7-%E7%82%B9%E5%87%BB%E3%80%90%E9%80%89%E6%8B%A9%E6%96%87%E4%BB%B6%E5%A4%B9%E3%80%91"><span class="nav-number">1.3.3.2.7.</span> <span class="nav-text">2.3.2.7 点击【选择文件夹】</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-2-8-%E5%9C%A8%E8%93%9D%E6%A1%86%E5%8C%BA%E5%9F%9F%E5%86%85%E5%8F%B3%E5%87%BB%EF%BC%8C%E7%82%B9%E5%87%BB%E3%80%90%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9%E3%80%91"><span class="nav-number">1.3.3.2.8.</span> <span class="nav-text">2.3.2.8 在蓝框区域内右击，点击【新建文件夹】</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-2-9-%E5%B0%86%E6%96%B0%E6%96%87%E4%BB%B6%E5%A4%B9%E5%90%8D%E7%A7%B0%E5%91%BD%E5%90%8D%E4%B8%BA%E3%80%90-vscode%E3%80%91-%E7%94%A8%E4%BA%8E%E6%94%BE%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%EF%BC%8C%E4%B8%8D%E8%83%BD%E5%86%99%E6%88%90%E5%85%B6%E4%BB%96%E5%90%8D%E7%A7%B0%EF%BC%8C-%E5%90%8D%E7%A7%B0%E6%9C%80%E5%89%8D%E9%9D%A2%E6%9C%89%E4%B8%AA%E7%82%B9%EF%BC%8C%E4%B8%8D%E8%A6%81%E5%86%99%E4%B8%A2"><span class="nav-number">1.3.3.2.9.</span> <span class="nav-text">2.3.2.9 将新文件夹名称命名为【.vscode】(用于放配置文件，不能写成其他名称， 名称最前面有个点，不要写丢)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-2-10-%E5%8F%B3%E5%87%BB%E3%80%90-vscode%E3%80%91%E6%96%87%E4%BB%B6%E5%A4%B9%EF%BC%8C%E7%82%B9%E3%80%90%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E3%80%91%E3%80%82"><span class="nav-number">1.3.3.2.10.</span> <span class="nav-text">2.3.2.10 右击【.vscode】文件夹，点【新建文件】。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-2-11-%E6%96%B0%E6%96%87%E4%BB%B6%E5%91%BD%E5%90%8D%E4%B8%BA%E3%80%90tasks-json%E3%80%91-%E7%89%B9%E5%AE%9A%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%90%8D%EF%BC%8C%E4%B8%8D%E5%8F%AF%E6%9B%B4%E6%94%B9"><span class="nav-number">1.3.3.2.11.</span> <span class="nav-text">2.3.2.11 新文件命名为【tasks.json】(特定配置文件名，不可更改)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-2-12-%E5%B0%86%E4%B8%8B%E9%9D%A2%E5%86%85%E5%AE%B9%E5%A4%8D%E5%88%B6%E7%B2%98%E8%B4%B4%E8%87%B3%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E3%80%90tasks-json%E3%80%91"><span class="nav-number">1.3.3.2.12.</span> <span class="nav-text">2.3.2.12 将下面内容复制粘贴至配置文件【tasks.json】</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-2-14-%E5%A4%8D%E5%88%B6%E5%AE%8C%E6%88%90%E5%90%8E%E5%90%8C%E6%97%B6%E6%8C%89%E3%80%90Ctrl%E3%80%91%E5%92%8C%E3%80%90S%E3%80%91%E4%B8%A4%E4%B8%AA%E9%94%AE%EF%BC%8C%E4%BF%9D%E5%AD%98%E4%BF%AE%E6%94%B9"><span class="nav-number">1.3.3.2.13.</span> <span class="nav-text">2.3.2.14 复制完成后同时按【Ctrl】和【S】两个键，保存修改</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-2-15-%E5%8F%B3%E5%87%BB%E3%80%90-vscode%E3%80%91%E6%96%87%E4%BB%B6%E5%A4%B9%EF%BC%8C%E7%82%B9%E3%80%90%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E3%80%91%E3%80%82"><span class="nav-number">1.3.3.2.14.</span> <span class="nav-text">2.3.2.15 右击【.vscode】文件夹，点【新建文件】。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-2-16-%E6%96%B0%E6%96%87%E4%BB%B6%E5%91%BD%E5%90%8D%E4%B8%BA%E3%80%90launch-json%E3%80%91-%E7%89%B9%E5%AE%9A%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%90%8D%EF%BC%8C%E4%B8%8D%E5%8F%AF%E6%9B%B4%E6%94%B9"><span class="nav-number">1.3.3.2.15.</span> <span class="nav-text">2.3.2.16 新文件命名为【launch.json】(特定配置文件名，不可更改)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-2-17-%E5%B0%86%E4%B8%8B%E9%9D%A2%E5%86%85%E5%AE%B9%E5%A4%8D%E5%88%B6%E7%B2%98%E8%B4%B4%E8%87%B3%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E3%80%90launch-json%E3%80%91"><span class="nav-number">1.3.3.2.16.</span> <span class="nav-text">2.3.2.17 将下面内容复制粘贴至配置文件【launch.json】</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-2-18-%E5%A4%8D%E5%88%B6%E5%AE%8C%E6%88%90%E5%90%8E%E5%90%8C%E6%97%B6%E6%8C%89%E3%80%90Ctrl%E3%80%91%E5%92%8C%E3%80%90S%E3%80%91%E4%B8%A4%E4%B8%AA%E9%94%AE%EF%BC%8C%E4%BF%9D%E5%AD%98%E4%BF%AE%E6%94%B9"><span class="nav-number">1.3.3.2.17.</span> <span class="nav-text">2.3.2.18 复制完成后同时按【Ctrl】和【S】两个键，保存修改</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-2-19-%E7%82%B9%E5%87%BB%E5%B7%A6%E4%B8%8B%E8%A7%92%E9%BD%BF%E8%BD%AE%E5%9B%BE%E6%A0%87"><span class="nav-number">1.3.3.2.18.</span> <span class="nav-text">2.3.2.19 点击左下角齿轮图标</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-2-20-%E7%82%B9%E5%87%BB%E9%94%AE%E7%9B%98%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F"><span class="nav-number">1.3.3.2.19.</span> <span class="nav-text">2.3.2.20 点击键盘快捷方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-2-21-%E8%BE%93%E5%85%A5%E3%80%90tasks%E3%80%91%EF%BC%8C%E6%89%BE%E5%88%B0%E3%80%90%E4%BB%BB%E5%8A%A1-%E8%BF%90%E8%A1%8C%E6%B5%8B%E8%AF%95%E4%BB%BB%E5%8A%A1%E3%80%91%EF%BC%8C%E7%82%B9%E5%89%8D%E9%9D%A2%E7%9A%84%E3%80%90-%E3%80%91%E5%8F%B7%E3%80%82"><span class="nav-number">1.3.3.2.20.</span> <span class="nav-text">2.3.2.21 输入【tasks】，找到【任务:运行测试任务】，点前面的【+】号。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-2-22-%E6%8C%89%E3%80%90F10%E3%80%91-%E4%B8%80%E4%B8%AA%E6%8B%AC%E5%8F%B7%E9%87%8C%E6%8C%87%E4%B8%80%E4%B8%AA%E9%94%AE%EF%BC%8C%E4%B8%8B%E5%90%8C-%EF%BC%8C%E5%86%8D%E6%8C%89%E5%9B%9E%E8%BD%A6"><span class="nav-number">1.3.3.2.21.</span> <span class="nav-text">2.3.2.22 按【F10】(一个括号里指一个键，下同)，再按回车</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-2-23-%E5%9B%9E%E5%88%B0%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E5%99%A8"><span class="nav-number">1.3.3.2.22.</span> <span class="nav-text">2.3.2.23 回到资源管理器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-2-24-%E5%9C%A8%E3%80%90-vscode%E3%80%91%E6%96%87%E4%BB%B6%E5%A4%B9%E5%A4%96%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%96%87%E4%BB%B6%E5%A4%B9%EF%BC%8C%E5%90%8D%E7%A7%B0%E9%9A%8F%E6%84%8F-%E4%B8%8D%E8%83%BD%E6%9C%89%E4%B8%AD%E6%96%87%EF%BC%8C%E4%B8%8B%E5%90%8C-%E3%80%90-vscode%E3%80%91%E6%96%87%E4%BB%B6%E5%A4%B9%E4%BB%8E%E7%8E%B0%E5%9C%A8%E5%BC%80%E5%A7%8B%E5%B0%B1%E4%B8%8D%E9%9C%80%E8%A6%81%E5%8A%A8%E4%BA%86%EF%BC%8C%E4%B8%8D%E8%A6%81%E5%9C%A8%E9%87%8C%E9%9D%A2%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%86%99%E4%B8%9C%E8%A5%BF"><span class="nav-number">1.3.3.2.23.</span> <span class="nav-text">2.3.2.24 在【.vscode】文件夹外建一个文件夹，名称随意(不能有中文，下同) (【.vscode】文件夹从现在开始就不需要动了，不要在里面新建文件写东西)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-2-25-%E5%9C%A8%E6%96%B0%E5%BB%BA%E7%9A%84%E6%96%87%E4%BB%B6%E5%A4%B9-%E6%88%91%E7%9A%84%E6%98%AF%E3%80%90test%E3%80%91-%E9%87%8C%E6%96%B0%E5%BB%BA%E4%B8%80%E4%B8%AAC-%E6%96%87%E4%BB%B6-%E6%88%91%E5%91%BD%E5%90%8D%E4%B8%BA%E3%80%90test-cpp%E3%80%91"><span class="nav-number">1.3.3.2.24.</span> <span class="nav-text">2.3.2.25 在新建的文件夹(我的是【test】)里新建一个C++文件(我命名为【test.cpp】)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-2-26-%E9%9A%8F%E4%BE%BF%E5%86%99%E4%B8%80%E6%AE%B5%E4%BB%A3%E7%A0%81-%E8%BE%93%E5%85%A5-a-b%EF%BC%8C%E8%BE%93%E5%87%BA-a-b-%E7%9A%84%E5%80%BC-%E3%80%82"><span class="nav-number">1.3.3.2.25.</span> <span class="nav-text">2.3.2.26 随便写一段代码(输入 a,b，输出 a+b 的值)。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-2-27-%E6%8C%89%E3%80%90F10%E3%80%91%E7%BC%96%E8%AF%91%E8%BF%90%E8%A1%8C%E7%A8%8B%E5%BA%8F%E3%80%82%E4%B8%8D%E4%BC%9A%E5%BC%B9%E5%87%BA%E9%BB%91%E6%A1%86%EF%BC%8C%E7%BB%88%E7%AB%AF%E8%BF%90%E8%A1%8C%E9%9B%86%E6%88%90%E5%9C%A8%E8%BD%AF%E4%BB%B6%E4%B8%AD-%E7%BA%A2-%E6%A1%86-%E3%80%82%E8%87%B3%E6%AD%A4%E9%85%8D%E7%BD%AE%E5%AE%8C%E6%88%90%E3%80%82"><span class="nav-number">1.3.3.2.26.</span> <span class="nav-text">2.3.2.27 按【F10】编译运行程序。不会弹出黑框，终端运行集成在软件中(红 框)。至此配置完成。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-VSCode-%E4%B8%AD%E7%9A%84%E8%B0%83%E8%AF%95%E5%8A%9F%E8%83%BD"><span class="nav-number">1.3.4.</span> <span class="nav-text">2.4 VSCode 中的调试功能</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-1-%E8%AE%BE%E7%BD%AE%E6%96%AD%E7%82%B9%EF%BC%8C%E5%9C%A8%E8%A1%8C%E5%8F%B7%E5%89%8D%E7%82%B9%E4%B8%80%E4%B8%8B%E5%8D%B3%E5%8F%AF%E3%80%82"><span class="nav-number">1.3.4.1.</span> <span class="nav-text">2.4.1 设置断点，在行号前点一下即可。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-2-%E8%B0%83%E8%AF%95%E8%BF%90%E8%A1%8C%EF%BC%8C%E5%85%88%E7%82%B9%E8%93%9D%E6%A1%86%E5%9B%BE%E6%A0%87%EF%BC%8C%E5%86%8D%E7%82%B9%E7%BA%A2%E6%A1%86%E5%9B%BE%E6%A0%87%E8%BF%9B%E8%A1%8C%E8%B0%83%E8%AF%95%E8%BF%90%E8%A1%8C%E3%80%82"><span class="nav-number">1.3.4.2.</span> <span class="nav-text">2.4.2 调试运行，先点蓝框图标，再点红框图标进行调试运行。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-3-%E7%BA%A2%E6%A1%86%E6%98%AF%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7%E6%A0%8F%EF%BC%8C%E8%93%9D%E6%A1%86%E4%B8%AD%E6%98%BE%E7%A4%BA%E8%B0%83%E8%AF%95%E7%9A%84%E6%95%B0%E5%80%BC%E4%BF%A1%E6%81%AF%EF%BC%8C%E7%BB%BF%E6%A1%86%E4%B8%BA%E7%BB%88%E7%AB%AF%E8%BF%9B%E8%A1%8C%E8%BE%93%E5%85%A5%E3%80%82"><span class="nav-number">1.3.4.3.</span> <span class="nav-text">2.4.3 红框是调试工具栏，蓝框中显示调试的数值信息，绿框为终端进行输入。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-4-%E8%B0%83%E8%AF%95%E5%8A%9F%E8%83%BD%E8%A6%81%E6%B1%82%E8%B7%AF%E5%BE%84%E4%B8%8D%E8%83%BD%E6%9C%89%E4%B8%AD%E6%96%87%E5%90%8D%EF%BC%8C%E5%8D%B3%E5%AD%98%E6%94%BE%E6%96%87%E4%BB%B6%E7%9A%84%E6%96%87%E4%BB%B6%E5%A4%B9%EF%BC%8C%E5%8C%85%E6%8B%AC%E6%96%87%E4%BB%B6%E5%A4%B9%E7%9A%84%E4%B8%8A-%E5%B1%82%E6%96%87%E4%BB%B6%E5%A4%B9%EF%BC%8C%E4%B8%8A%E4%B8%8A%E5%B1%82%E6%96%87%E4%BB%B6%E5%A4%B9%E7%AD%89%E7%AD%89%E7%AD%89%E7%AD%89%EF%BC%8C%E4%B8%80%E6%97%A6%E5%85%B6%E4%B8%AD%E4%B8%80%E4%B8%AA%E6%96%87%E4%BB%B6%E5%A4%B9%E6%9C%89%E4%B8%AD%E6%96%87%E5%90%8D%EF%BC%8C%E5%88%99%E8%B0%83%E8%AF%95%E5%8A%9F%E8%83%BD-%E4%BC%9A%E6%8A%A5%E9%94%99%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8%EF%BC%8C%E8%BF%99%E6%98%AF%E5%B7%B2%E7%9F%A5-bug%EF%BC%8C%E5%9C%A8%E5%BE%AE%E8%BD%AF%E6%9C%AA%E4%BF%AE%E5%A4%8D%E4%B9%8B%E5%89%8D%E5%8F%AA%E8%83%BD%E6%B3%A8%E6%84%8F%E9%81%BF%E5%85%8D%E3%80%82"><span class="nav-number">1.3.4.4.</span> <span class="nav-text">2.4.4 调试功能要求路径不能有中文名，即存放文件的文件夹，包括文件夹的上 层文件夹，上上层文件夹等等等等，一旦其中一个文件夹有中文名，则调试功能 会报错无法使用，这是已知 bug，在微软未修复之前只能注意避免。</span></a></li></ol></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="一刻陈杉"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">一刻陈杉</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">66</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">41</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/origcat" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;origcat" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:jinxinsong@outlook.com" title="E-Mail → mailto:jinxinsong@outlook.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_nd.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yikechenshan.github.io/vscode_cpp_zero_based/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="一刻陈杉">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="平凡的博客">
+      <meta itemprop="description" content="">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="VSCode的C++环境基础配置【零基础版】 | 平凡的博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          VSCode的C++环境基础配置【零基础版】
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-10-07 22:20:00" itemprop="dateCreated datePublished" datetime="2020-10-07T22:20:00+08:00">2020-10-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2020-12-07 22:21:47" itemprop="dateModified" datetime="2020-12-07T22:21:47+08:00">2020-12-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index"><span itemprop="name">工具</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B7%A5%E5%85%B7/vscode/" itemprop="url" rel="index"><span itemprop="name">vscode</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B7%A5%E5%85%B7/vscode/c/" itemprop="url" rel="index"><span itemprop="name">c++</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>这篇还是写给比我还小白的小白看的，步骤可以说是很详细了，要不是录视频说话属实感觉太尬，直接录个视频其实比这个省事多了。</p>
+<span id="more"></span>
+
+<h1 id="VSCode的C-环境基础配置"><a href="#VSCode的C-环境基础配置" class="headerlink" title="VSCode的C++环境基础配置"></a>VSCode的C++环境基础配置</h1><h2 id="声明"><a href="#声明" class="headerlink" title="声明:"></a>声明:</h2><blockquote>
+<p>本文档的一切内容均为本地测试结果，受限于本人知识与能力，仅供参考， 如因参照本文档操作而发生任何问题，无论是否严格参照本文档操作，请恕 本人概不负责。</p>
+</blockquote>
+<blockquote>
+<p>文档中的任何观点受限于本人知识、能力及眼界，不保证理智，公正，客观。 如本文档中观点与您相左，以您的意见为准。</p>
+</blockquote>
+<h2 id="一、写在前面"><a href="#一、写在前面" class="headerlink" title="一、写在前面"></a>一、写在前面</h2><p>本人的观点一向为 <strong>折腾工具纯属苦难哲学</strong> ，这样说来，用vscode写C就纯属苦难哲学，毕竟直接安装就能用IDE(集成开发环境)一大堆，所以，如果看完本文觉得没必要，那依旧使用原来的工具写代码也是很正常的，选择权在每个个人。</p>
+<p><strong>VSCode 的优点:</strong> 美观(相较于 Dev-cpp)，轻量(相较于 Visual Studio)，更好 的代码补全(相较于 Dev-cpp)，免费开源。</p>
+<p><strong>VSCode 的缺点:</strong> 配置过程较繁琐。</p>
+<p><strong>简易版安装教程:</strong> <a target="_blank" rel="noopener" href="http://blog.origincat.com/post/9">简易版安装教程</a>（适合曾经配置过的或者对相关知识有一定了解的人，如果只要配置文件也请看这边）</p>
+<p><strong>视频版安装教程:</strong> <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1ny4y1B7ez/https://www.bilibili.com/video/BV1ny4y1B7ez/">视频版安装教程</a>（受限于设备，录制的卡成PPT了，无配音，仅用于辅助参考）</p>
+<h2 id="二、安装配置步骤"><a href="#二、安装配置步骤" class="headerlink" title="二、安装配置步骤:"></a>二、安装配置步骤:</h2><h3 id="2-1-安装编译器"><a href="#2-1-安装编译器" class="headerlink" title="2.1 安装编译器"></a>2.1 安装编译器</h3><h4 id="2-1-1-为什么要安装编译器"><a href="#2-1-1-为什么要安装编译器" class="headerlink" title="2.1.1 为什么要安装编译器?"></a>2.1.1 为什么要安装编译器?</h4><p>VSCode并不是一个IDE，而是一个编辑器，它的性质可以理解为电脑自带的文本文档，本身只有编辑功能。而我们不光是要写(编辑)代码，还要将代码变成可执行的应用程序，这个过程就是编译，不同于大部分IDE自带了编译器，VSCode这个编辑器要自行安装编译器。(不能理解可以暂时无视)</p>
+<h4 id="2-1-2-安装过程"><a href="#2-1-2-安装过程" class="headerlink" title="2.1.2 安装过程"></a>2.1.2 安装过程</h4><blockquote>
+<p>安装过程在一个全新刚安装的 64 位 Window10 操作系统上进行演示(下同) </p>
+</blockquote>
+<h5 id="2-1-2-1-下载"><a href="#2-1-2-1-下载" class="headerlink" title="2.1.2.1 下载"></a>2.1.2.1 下载</h5><p>由于是国外网站，可能出现无法访问等情况，可以通过QQ群文件下载，或通过微云下载，</p>
+<p>微云链接:<a target="_blank" rel="noopener" href="https://share.weiyun.com/vAC0qE9T">https://share.weiyun.com/vAC0qE9T</a> 密码:5twvhi </p>
+<h6 id="2-1-2-1-1-在浏览器中输入网址“mingw-w64-org”并按回车，进入官网，并点击-【downloads】"><a href="#2-1-2-1-1-在浏览器中输入网址“mingw-w64-org”并按回车，进入官网，并点击-【downloads】" class="headerlink" title="2.1.2.1.1 在浏览器中输入网址“mingw-w64.org”并按回车，进入官网，并点击 【downloads】"></a>2.1.2.1.1 在浏览器中输入网址“mingw-w64.org”并按回车，进入官网，并点击 【downloads】</h6><p><img src="http://img.jinxinsong.cn/20201022185135.png" alt="20201022185135"></p>
+<h6 id="2-1-2-1-2-跳转到的页面下拉到如图所示的位置，点击【SourceForge】。"><a href="#2-1-2-1-2-跳转到的页面下拉到如图所示的位置，点击【SourceForge】。" class="headerlink" title="2.1.2.1.2 跳转到的页面下拉到如图所示的位置，点击【SourceForge】。"></a>2.1.2.1.2 跳转到的页面下拉到如图所示的位置，点击【SourceForge】。</h6><p><img src="http://img.jinxinsong.cn/20201022185303.png" alt="20201022185303"></p>
+<h6 id="2-1-2-1-3-跳转到的页面下拉到如图所示的位置，点击【x86-64-posix-seh】。"><a href="#2-1-2-1-3-跳转到的页面下拉到如图所示的位置，点击【x86-64-posix-seh】。" class="headerlink" title="2.1.2.1.3 跳转到的页面下拉到如图所示的位置，点击【x86_64-posix-seh】。"></a>2.1.2.1.3 跳转到的页面下拉到如图所示的位置，点击【x86_64-posix-seh】。</h6><p><img src="http://img.jinxinsong.cn/20201022185409.png" alt="20201022185409"></p>
+<h6 id="2-1-2-1-4-等待网站跳转，点击【保存】。"><a href="#2-1-2-1-4-等待网站跳转，点击【保存】。" class="headerlink" title="2.1.2.1.4 等待网站跳转，点击【保存】。"></a>2.1.2.1.4 等待网站跳转，点击【保存】。</h6><p><img src="http://img.jinxinsong.cn/20201022185518.png" alt="20201022185518"></p>
+<h5 id="2-1-2-2-安装"><a href="#2-1-2-2-安装" class="headerlink" title="2.1.2.2 安装"></a>2.1.2.2 安装</h5><h6 id="2-1-2-2-1-找到下载的文件，进行解压。-解压软件安装配置见文档解压缩软件的-选择与安装-。"><a href="#2-1-2-2-1-找到下载的文件，进行解压。-解压软件安装配置见文档解压缩软件的-选择与安装-。" class="headerlink" title="2.1.2.2.1 找到下载的文件，进行解压。(解压软件安装配置见文档解压缩软件的 选择与安装)。"></a>2.1.2.2.1 找到下载的文件，进行解压。(解压软件安装配置见文档解压缩软件的 选择与安装)。</h6><p><img src="http://img.jinxinsong.cn/20201022185859.png" alt="20201022185859"></p>
+<h6 id="2-1-2-2-2-等待解压完成。"><a href="#2-1-2-2-2-等待解压完成。" class="headerlink" title="2.1.2.2.2 等待解压完成。"></a>2.1.2.2.2 等待解压完成。</h6><p><img src="http://img.jinxinsong.cn/20201022190012.png" alt="20201022190012"></p>
+<h6 id="2-1-2-2-3-点进解压得到的文件夹。"><a href="#2-1-2-2-3-点进解压得到的文件夹。" class="headerlink" title="2.1.2.2.3 点进解压得到的文件夹。"></a>2.1.2.2.3 点进解压得到的文件夹。</h6><p><img src="http://img.jinxinsong.cn/20201022190245.png" alt="20201022190245"></p>
+<h6 id="2-1-2-2-4-复制里面的文件夹-右击文件夹，点【复制】-。"><a href="#2-1-2-2-4-复制里面的文件夹-右击文件夹，点【复制】-。" class="headerlink" title="2.1.2.2.4 复制里面的文件夹(右击文件夹，点【复制】)。"></a>2.1.2.2.4 复制里面的文件夹(右击文件夹，点【复制】)。</h6><p><img src="http://img.jinxinsong.cn/20201022190610.png" alt="20201022190610"></p>
+<h6 id="2-1-2-2-5-转到-C-盘中的-Program-Files-文件夹，空白处右击，点【粘贴】。"><a href="#2-1-2-2-5-转到-C-盘中的-Program-Files-文件夹，空白处右击，点【粘贴】。" class="headerlink" title="2.1.2.2.5 转到 C 盘中的 Program Files 文件夹，空白处右击，点【粘贴】。"></a>2.1.2.2.5 转到 C 盘中的 Program Files 文件夹，空白处右击，点【粘贴】。</h6><p><img src="http://img.jinxinsong.cn/20201022190659.png" alt="20201022190659"></p>
+<h6 id="2-1-2-2-6-点击【继续】，等待复制完成。"><a href="#2-1-2-2-6-点击【继续】，等待复制完成。" class="headerlink" title="2.1.2.2.6 点击【继续】，等待复制完成。"></a>2.1.2.2.6 点击【继续】，等待复制完成。</h6><p><img src="http://img.jinxinsong.cn/20201022190746.png" alt="20201022190746"></p>
+<h6 id="2-1-2-2-7-右击【此电脑】，点击【属性】。"><a href="#2-1-2-2-7-右击【此电脑】，点击【属性】。" class="headerlink" title="2.1.2.2.7 右击【此电脑】，点击【属性】。"></a>2.1.2.2.7 右击【此电脑】，点击【属性】。</h6><p><img src="http://img.jinxinsong.cn/20201022190940.png" alt="20201022190940"></p>
+<h6 id="2-1-2-2-8-点击【高级系统设置】"><a href="#2-1-2-2-8-点击【高级系统设置】" class="headerlink" title="2.1.2.2.8 点击【高级系统设置】"></a>2.1.2.2.8 点击【高级系统设置】</h6><p><img src="http://img.jinxinsong.cn/20201022191053.png" alt="20201022191053"></p>
+<h6 id="2-1-2-2-9-点击【环境变量】"><a href="#2-1-2-2-9-点击【环境变量】" class="headerlink" title="2.1.2.2.9 点击【环境变量】"></a>2.1.2.2.9 点击【环境变量】</h6><p><img src="http://img.jinxinsong.cn/20201022191137.png" alt="20201022191137"></p>
+<h6 id="2-1-2-2-10-在系统变量中找到-Path，点击-Path-变量，再点【编辑】。-或双击-Path"><a href="#2-1-2-2-10-在系统变量中找到-Path，点击-Path-变量，再点【编辑】。-或双击-Path" class="headerlink" title="2.1.2.2.10 在系统变量中找到 Path，点击 Path 变量，再点【编辑】。(或双击 Path)"></a>2.1.2.2.10 在系统变量中找到 Path，点击 Path 变量，再点【编辑】。(或双击 Path)</h6><p><img src="http://img.jinxinsong.cn/20201022191524.png" alt="20201022191524"></p>
+<h6 id="2-1-2-2-11-点击【新建】，输入【C-Program-Files-mingw64-bin】，点击【确定】。"><a href="#2-1-2-2-11-点击【新建】，输入【C-Program-Files-mingw64-bin】，点击【确定】。" class="headerlink" title="2.1.2.2.11 点击【新建】，输入【C:\Program Files\mingw64\bin】，点击【确定】。"></a>2.1.2.2.11 点击【新建】，输入【C:\Program Files\mingw64\bin】，点击【确定】。</h6><p><img src="http://img.jinxinsong.cn/20201022191611.png" alt="20201022191611"></p>
+<h6 id="2-1-2-2-12-点击【确定】"><a href="#2-1-2-2-12-点击【确定】" class="headerlink" title="2.1.2.2.12 点击【确定】"></a>2.1.2.2.12 点击【确定】</h6><p><img src="http://img.jinxinsong.cn/20201022191828.png" alt="20201022191828"></p>
+<h6 id="2-1-2-2-13-点击【确定】"><a href="#2-1-2-2-13-点击【确定】" class="headerlink" title="2.1.2.2.13 点击【确定】"></a>2.1.2.2.13 点击【确定】</h6><p><img src="http://img.jinxinsong.cn/20201022191917.png" alt="20201022191917"></p>
+<h5 id="2-1-2-3-测试-可做可不做"><a href="#2-1-2-3-测试-可做可不做" class="headerlink" title="2.1.2.3 测试(可做可不做)"></a>2.1.2.3 测试(可做可不做)</h5><h6 id="2-1-2-3-1-同时按下键盘的【win】和【R】键，呼出运行窗口，输入-cmd，点【确-定】-或直接回车"><a href="#2-1-2-3-1-同时按下键盘的【win】和【R】键，呼出运行窗口，输入-cmd，点【确-定】-或直接回车" class="headerlink" title="2.1.2.3.1 同时按下键盘的【win】和【R】键，呼出运行窗口，输入 cmd，点【确 定】(或直接回车)"></a>2.1.2.3.1 同时按下键盘的【win】和【R】键，呼出运行窗口，输入 cmd，点【确 定】(或直接回车)</h6><p><img src="http://img.jinxinsong.cn/20201022192013.png" alt="20201022192013"></p>
+<h6 id="2-1-2-3-2-在呼出的黑框中输入-gcc，回车，出现下图所示文字则配置成功。"><a href="#2-1-2-3-2-在呼出的黑框中输入-gcc，回车，出现下图所示文字则配置成功。" class="headerlink" title="2.1.2.3.2 在呼出的黑框中输入 gcc，回车，出现下图所示文字则配置成功。"></a>2.1.2.3.2 在呼出的黑框中输入 gcc，回车，出现下图所示文字则配置成功。</h6><p><img src="http://img.jinxinsong.cn/20201022192057.png" alt="20201022192057"></p>
+<h3 id="2-2-安装-vscode"><a href="#2-2-安装-vscode" class="headerlink" title="2.2 安装 vscode"></a>2.2 安装 vscode</h3><h4 id="2-2-1-下载"><a href="#2-2-1-下载" class="headerlink" title="2.2.1 下载"></a>2.2.1 下载</h4><p>也可以通过QQ群文件下载，或通过微云下载。</p>
+<p>微云链接:<a target="_blank" rel="noopener" href="https://share.weiyun.com/jkLR9hTf">https://share.weiyun.com/jkLR9hTf</a> 密码:yebej6</p>
+<p><strong>官网下载方法如下：</strong></p>
+<h5 id="2-2-1-1-在浏览器中输入网址-https-code-visualstudio-com-访问，点击红框位置。"><a href="#2-2-1-1-在浏览器中输入网址-https-code-visualstudio-com-访问，点击红框位置。" class="headerlink" title="2.2.1.1 在浏览器中输入网址 https://code.visualstudio.com 访问，点击红框位置。"></a>2.2.1.1 在浏览器中输入网址 <a target="_blank" rel="noopener" href="https://code.visualstudio.com/">https://code.visualstudio.com</a> 访问，点击红框位置。</h5><p><img src="http://img.jinxinsong.cn/20201022192401.png" alt="20201022192401"></p>
+<h5 id="2-2-1-2-点击【Other-downloads】"><a href="#2-2-1-2-点击【Other-downloads】" class="headerlink" title="2.2.1.2 点击【Other downloads】"></a>2.2.1.2 点击【Other downloads】</h5><p><img src="http://img.jinxinsong.cn/20201022192455.png" alt="20201022192455"></p>
+<h5 id="2-2-1-3-点击-64-位系统安装包链接。"><a href="#2-2-1-3-点击-64-位系统安装包链接。" class="headerlink" title="2.2.1.3 点击 64 位系统安装包链接。"></a>2.2.1.3 点击 64 位系统安装包链接。</h5><p><img src="http://img.jinxinsong.cn/20201022192553.png" alt="20201022192553"></p>
+<h5 id="2-2-1-4-等待跳转后点【保存】。"><a href="#2-2-1-4-等待跳转后点【保存】。" class="headerlink" title="2.2.1.4 等待跳转后点【保存】。"></a>2.2.1.4 等待跳转后点【保存】。</h5><p><img src="http://img.jinxinsong.cn/20201022192634.png" alt="20201022192634"></p>
+<h4 id="2-2-2-安装"><a href="#2-2-2-安装" class="headerlink" title="2.2.2 安装"></a>2.2.2 安装</h4><h5 id="2-2-2-1-找到下载安装包的位置，双击安装包。"><a href="#2-2-2-1-找到下载安装包的位置，双击安装包。" class="headerlink" title="2.2.2.1 找到下载安装包的位置，双击安装包。"></a>2.2.2.1 找到下载安装包的位置，双击安装包。</h5><p><img src="http://img.jinxinsong.cn/20201022192729.png" alt="20201022192729"></p>
+<h5 id="2-2-2-2-点击【是】。"><a href="#2-2-2-2-点击【是】。" class="headerlink" title="2.2.2.2 点击【是】。"></a>2.2.2.2 点击【是】。</h5><p><img src="http://img.jinxinsong.cn/20201022192807.png" alt="20201022192807"></p>
+<h5 id="2-2-2-3-选择【我同意此协议】，然后点击【下一步】。"><a href="#2-2-2-3-选择【我同意此协议】，然后点击【下一步】。" class="headerlink" title="2.2.2.3 选择【我同意此协议】，然后点击【下一步】。"></a>2.2.2.3 选择【我同意此协议】，然后点击【下一步】。</h5><p><img src="http://img.jinxinsong.cn/20201022192850.png" alt="20201022192850"></p>
+<h5 id="2-2-2-4-选择安装的路径-建议不变-，然后点击【下一步】。"><a href="#2-2-2-4-选择安装的路径-建议不变-，然后点击【下一步】。" class="headerlink" title="2.2.2.4 选择安装的路径(建议不变)，然后点击【下一步】。"></a>2.2.2.4 选择安装的路径(建议不变)，然后点击【下一步】。</h5><p><img src="http://img.jinxinsong.cn/20201022193218.png" alt="20201022193218"></p>
+<h5 id="2-2-2-5-不变，继续【下一步】"><a href="#2-2-2-5-不变，继续【下一步】" class="headerlink" title="2.2.2.5 不变，继续【下一步】"></a>2.2.2.5 不变，继续【下一步】</h5><p><img src="http://img.jinxinsong.cn/20201022193258.png" alt="20201022193258"></p>
+<h5 id="2-2-2-6-全部勾选，然后点击【下一步】。"><a href="#2-2-2-6-全部勾选，然后点击【下一步】。" class="headerlink" title="2.2.2.6 全部勾选，然后点击【下一步】。"></a>2.2.2.6 全部勾选，然后点击【下一步】。</h5><p><img src="http://img.jinxinsong.cn/20201022193349.png" alt="20201022193349"></p>
+<h5 id="2-2-2-7-点击【安装】。"><a href="#2-2-2-7-点击【安装】。" class="headerlink" title="2.2.2.7 点击【安装】。"></a>2.2.2.7 点击【安装】。</h5><p><img src="http://img.jinxinsong.cn/20201022193455.png" alt="20201022193455"></p>
+<h5 id="2-2-2-8-点击【完成】。"><a href="#2-2-2-8-点击【完成】。" class="headerlink" title="2.2.2.8 点击【完成】。"></a>2.2.2.8 点击【完成】。</h5><p><img src="http://img.jinxinsong.cn/20201022193542.png" alt="20201022193542"></p>
+<h3 id="2-3-配置-VSCode"><a href="#2-3-配置-VSCode" class="headerlink" title="2.3 配置 VSCode"></a>2.3 配置 VSCode</h3><h4 id="2-3-1-汉化-可做可不做"><a href="#2-3-1-汉化-可做可不做" class="headerlink" title="2.3.1 汉化(可做可不做)"></a>2.3.1 汉化(可做可不做)</h4><h5 id="2-3-1-1-点击红框中的图标-插件图标"><a href="#2-3-1-1-点击红框中的图标-插件图标" class="headerlink" title="2.3.1.1 点击红框中的图标(插件图标)"></a>2.3.1.1 点击红框中的图标(插件图标)</h5><p><img src="http://img.jinxinsong.cn/20201022193702.png" alt="20201022193702"></p>
+<h5 id="2-3-1-2-输入【chinese】，点击第一个的【install】。"><a href="#2-3-1-2-输入【chinese】，点击第一个的【install】。" class="headerlink" title="2.3.1.2 输入【chinese】，点击第一个的【install】。"></a>2.3.1.2 输入【chinese】，点击第一个的【install】。</h5><p><img src="http://img.jinxinsong.cn/20201022193741.png" alt="20201022193741"></p>
+<h5 id="2-3-1-3-等待安装完毕，弹出弹框，点击【Restart-Now】重启VSCode。"><a href="#2-3-1-3-等待安装完毕，弹出弹框，点击【Restart-Now】重启VSCode。" class="headerlink" title="2.3.1.3 等待安装完毕，弹出弹框，点击【Restart Now】重启VSCode。"></a>2.3.1.3 等待安装完毕，弹出弹框，点击【Restart Now】重启VSCode。</h5><p><img src="http://img.jinxinsong.cn/20201022193841.png" alt="20201022193841"></p>
+<h5 id="2-3-1-4-重启之后就是中文界面。"><a href="#2-3-1-4-重启之后就是中文界面。" class="headerlink" title="2.3.1.4 重启之后就是中文界面。"></a>2.3.1.4 重启之后就是中文界面。</h5><p><img src="http://img.jinxinsong.cn/20201022193922.png" alt="20201022193922"></p>
+<h4 id="2-3-2-配置-C-x2F-C-环境"><a href="#2-3-2-配置-C-x2F-C-环境" class="headerlink" title="2.3.2 配置 C&#x2F;C++环境"></a>2.3.2 配置 C&#x2F;C++环境</h4><h5 id="2-3-2-1-点击红框中的图标-插件图标"><a href="#2-3-2-1-点击红框中的图标-插件图标" class="headerlink" title="2.3.2.1 点击红框中的图标(插件图标)"></a>2.3.2.1 点击红框中的图标(插件图标)</h5><p><img src="http://img.jinxinsong.cn/20201022194036.png" alt="20201022194036"></p>
+<h5 id="2-3-2-2-输入【C】，点击第一个的【安装】。"><a href="#2-3-2-2-输入【C】，点击第一个的【安装】。" class="headerlink" title="2.3.2.2 输入【C】，点击第一个的【安装】。"></a>2.3.2.2 输入【C】，点击第一个的【安装】。</h5><p><img src="http://img.jinxinsong.cn/20201022194115.png" alt="20201022194115"></p>
+<h5 id="2-3-2-3-点击红框中的图标"><a href="#2-3-2-3-点击红框中的图标" class="headerlink" title="2.3.2.3 点击红框中的图标"></a>2.3.2.3 点击红框中的图标</h5><p><img src="http://img.jinxinsong.cn/20201022194159.png" alt="20201022194159"></p>
+<h5 id="2-3-2-4-点击【打开文件夹】"><a href="#2-3-2-4-点击【打开文件夹】" class="headerlink" title="2.3.2.4 点击【打开文件夹】"></a>2.3.2.4 点击【打开文件夹】</h5><p><img src="http://img.jinxinsong.cn/20201022194235.png" alt="20201022194235"></p>
+<h5 id="2-3-2-5-自己选一个文件夹，然后右击，【新建】，【文件夹】，用来存放以后编写-的代码。-建议直接在文档中新建，可听可不听"><a href="#2-3-2-5-自己选一个文件夹，然后右击，【新建】，【文件夹】，用来存放以后编写-的代码。-建议直接在文档中新建，可听可不听" class="headerlink" title="2.3.2.5 自己选一个文件夹，然后右击，【新建】，【文件夹】，用来存放以后编写 的代码。(建议直接在文档中新建，可听可不听)"></a>2.3.2.5 自己选一个文件夹，然后右击，【新建】，【文件夹】，用来存放以后编写 的代码。(建议直接在文档中新建，可听可不听)</h5><p><img src="http://img.jinxinsong.cn/20201022194318.png" alt="20201022194318"></p>
+<h5 id="2-3-2-6-将新建的文件夹重命名，不要用中文名-可以写-CCode"><a href="#2-3-2-6-将新建的文件夹重命名，不要用中文名-可以写-CCode" class="headerlink" title="2.3.2.6 将新建的文件夹重命名，不要用中文名(可以写 CCode)"></a>2.3.2.6 将新建的文件夹重命名，不要用中文名(可以写 CCode)</h5><p><img src="http://img.jinxinsong.cn/20201022194355.png" alt="20201022194355"></p>
+<h5 id="2-3-2-7-点击【选择文件夹】"><a href="#2-3-2-7-点击【选择文件夹】" class="headerlink" title="2.3.2.7 点击【选择文件夹】"></a>2.3.2.7 点击【选择文件夹】</h5><p><img src="http://img.jinxinsong.cn/20201022194438.png" alt="20201022194438"></p>
+<h5 id="2-3-2-8-在蓝框区域内右击，点击【新建文件夹】"><a href="#2-3-2-8-在蓝框区域内右击，点击【新建文件夹】" class="headerlink" title="2.3.2.8 在蓝框区域内右击，点击【新建文件夹】"></a>2.3.2.8 在蓝框区域内右击，点击【新建文件夹】</h5><p><img src="http://img.jinxinsong.cn/20201022194537.png" alt="20201022194537"></p>
+<h5 id="2-3-2-9-将新文件夹名称命名为【-vscode】-用于放配置文件，不能写成其他名称，-名称最前面有个点，不要写丢"><a href="#2-3-2-9-将新文件夹名称命名为【-vscode】-用于放配置文件，不能写成其他名称，-名称最前面有个点，不要写丢" class="headerlink" title="2.3.2.9 将新文件夹名称命名为【.vscode】(用于放配置文件，不能写成其他名称， 名称最前面有个点，不要写丢)"></a>2.3.2.9 将新文件夹名称命名为【.vscode】(用于放配置文件，不能写成其他名称， 名称最前面有个点，不要写丢)</h5><p><img src="http://img.jinxinsong.cn/20201022194626.png" alt="20201022194626"></p>
+<h5 id="2-3-2-10-右击【-vscode】文件夹，点【新建文件】。"><a href="#2-3-2-10-右击【-vscode】文件夹，点【新建文件】。" class="headerlink" title="2.3.2.10 右击【.vscode】文件夹，点【新建文件】。"></a>2.3.2.10 右击【.vscode】文件夹，点【新建文件】。</h5><p><img src="http://img.jinxinsong.cn/20201022194659.png" alt="20201022194659"></p>
+<h5 id="2-3-2-11-新文件命名为【tasks-json】-特定配置文件名，不可更改"><a href="#2-3-2-11-新文件命名为【tasks-json】-特定配置文件名，不可更改" class="headerlink" title="2.3.2.11 新文件命名为【tasks.json】(特定配置文件名，不可更改)"></a>2.3.2.11 新文件命名为【tasks.json】(特定配置文件名，不可更改)</h5><p><img src="http://img.jinxinsong.cn/20201022194732.png" alt="20201022194732"></p>
+<h5 id="2-3-2-12-将下面内容复制粘贴至配置文件【tasks-json】"><a href="#2-3-2-12-将下面内容复制粘贴至配置文件【tasks-json】" class="headerlink" title="2.3.2.12 将下面内容复制粘贴至配置文件【tasks.json】"></a>2.3.2.12 将下面内容复制粘贴至配置文件【tasks.json】</h5><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;version&quot;</span><span class="punctuation">:</span> <span class="string">&quot;2.0.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;tasks&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span> </span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;label&quot;</span><span class="punctuation">:</span> <span class="string">&quot;build&quot;</span><span class="punctuation">,</span> </span><br><span class="line">            <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;process&quot;</span><span class="punctuation">,</span> </span><br><span class="line">            <span class="attr">&quot;command&quot;</span><span class="punctuation">:</span> <span class="string">&quot;g++&quot;</span><span class="punctuation">,</span> </span><br><span class="line">            <span class="attr">&quot;args&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                <span class="string">&quot;-g&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="string">&quot;-Wall&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="string">&quot;-std=c++14&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="string">&quot;-lm&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="string">&quot;$&#123;file&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="string">&quot;-o&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="string">&quot;$&#123;fileDirname&#125;/$&#123;fileBasenameNoExtension&#125;.o&quot;</span></span><br><span class="line">            <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;presentation&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;echo&quot;</span><span class="punctuation">:</span> <span class="keyword">false</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;reveal&quot;</span><span class="punctuation">:</span> <span class="string">&quot;silent&quot;</span><span class="punctuation">,</span> </span><br><span class="line">                <span class="attr">&quot;showReuseMessage&quot;</span><span class="punctuation">:</span> <span class="keyword">false</span></span><br><span class="line">            <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;problemMatcher&quot;</span><span class="punctuation">:</span> <span class="string">&quot;$gcc&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;group&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;kind&quot;</span><span class="punctuation">:</span> <span class="string">&quot;build&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;isDefault&quot;</span><span class="punctuation">:</span> <span class="keyword">true</span></span><br><span class="line">            <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;windows&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;args&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                    <span class="string">&quot;-g&quot;</span><span class="punctuation">,</span></span><br><span class="line">                    <span class="string">&quot;-Wall&quot;</span><span class="punctuation">,</span></span><br><span class="line">                    <span class="string">&quot;-std=c++14&quot;</span><span class="punctuation">,</span></span><br><span class="line">                    <span class="string">&quot;-lm&quot;</span><span class="punctuation">,</span></span><br><span class="line">                    <span class="string">&quot;$&#123;file&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">                    <span class="string">&quot;-o&quot;</span><span class="punctuation">,</span></span><br><span class="line">                    <span class="string">&quot;$&#123;fileDirname&#125;/$&#123;fileBasenameNoExtension&#125;.exe&quot;</span></span><br><span class="line">                <span class="punctuation">]</span> </span><br><span class="line">            <span class="punctuation">&#125;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span> </span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;label&quot;</span><span class="punctuation">:</span> <span class="string">&quot;run&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;shell&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;dependsOn&quot;</span><span class="punctuation">:</span> <span class="string">&quot;build&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;command&quot;</span><span class="punctuation">:</span> <span class="string">&quot;$&#123;fileDirname&#125;/$&#123;fileBasenameNoExtension&#125;.o&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;presentation&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;focus&quot;</span><span class="punctuation">:</span> <span class="keyword">true</span></span><br><span class="line">            <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;group&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;kind&quot;</span><span class="punctuation">:</span> <span class="string">&quot;test&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;isDefault&quot;</span><span class="punctuation">:</span> <span class="keyword">true</span></span><br><span class="line">            <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;windows&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;command&quot;</span><span class="punctuation">:</span> <span class="string">&quot;$&#123;fileDirname&#125;/$&#123;fileBasenameNoExtension&#125;.exe&quot;</span></span><br><span class="line">            <span class="punctuation">&#125;</span> </span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span> </span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="2-3-2-14-复制完成后同时按【Ctrl】和【S】两个键，保存修改"><a href="#2-3-2-14-复制完成后同时按【Ctrl】和【S】两个键，保存修改" class="headerlink" title="2.3.2.14 复制完成后同时按【Ctrl】和【S】两个键，保存修改"></a>2.3.2.14 复制完成后同时按【Ctrl】和【S】两个键，保存修改</h5><p><img src="http://img.jinxinsong.cn/20201022195703.png" alt="20201022195703"></p>
+<h5 id="2-3-2-15-右击【-vscode】文件夹，点【新建文件】。"><a href="#2-3-2-15-右击【-vscode】文件夹，点【新建文件】。" class="headerlink" title="2.3.2.15 右击【.vscode】文件夹，点【新建文件】。"></a>2.3.2.15 右击【.vscode】文件夹，点【新建文件】。</h5><p><img src="http://img.jinxinsong.cn/20201022195743.png" alt="20201022195743"></p>
+<h5 id="2-3-2-16-新文件命名为【launch-json】-特定配置文件名，不可更改"><a href="#2-3-2-16-新文件命名为【launch-json】-特定配置文件名，不可更改" class="headerlink" title="2.3.2.16 新文件命名为【launch.json】(特定配置文件名，不可更改)"></a>2.3.2.16 新文件命名为【launch.json】(特定配置文件名，不可更改)</h5><p><img src="http://img.jinxinsong.cn/20201022195824.png" alt="20201022195824"></p>
+<h5 id="2-3-2-17-将下面内容复制粘贴至配置文件【launch-json】"><a href="#2-3-2-17-将下面内容复制粘贴至配置文件【launch-json】" class="headerlink" title="2.3.2.17 将下面内容复制粘贴至配置文件【launch.json】"></a>2.3.2.17 将下面内容复制粘贴至配置文件【launch.json】</h5><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="comment">// Use IntelliSense to learn about possible attributes. // Hover to view descriptions of existing attributes.</span></span><br><span class="line">    <span class="comment">// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387 &quot;version&quot;: &quot;0.2.0&quot;,</span></span><br><span class="line">    <span class="attr">&quot;configurations&quot;</span><span class="punctuation">:</span><span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;(gdb) Launch&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;cppdbg&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;request&quot;</span><span class="punctuation">:</span> <span class="string">&quot;launch&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;program&quot;</span><span class="punctuation">:</span> <span class="string">&quot;$&#123;fileDirname&#125;/$&#123;fileBasenameNoExtension&#125;.o&quot;</span><span class="punctuation">,</span> </span><br><span class="line">            <span class="attr">&quot;args&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;stopAtEntry&quot;</span><span class="punctuation">:</span> <span class="keyword">false</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;cwd&quot;</span><span class="punctuation">:</span> <span class="string">&quot;$&#123;workspaceFolder&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;environment&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;externalConsole&quot;</span><span class="punctuation">:</span> <span class="keyword">false</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;MIMode&quot;</span><span class="punctuation">:</span> <span class="string">&quot;gdb&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;setupCommands&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                <span class="punctuation">&#123;</span></span><br><span class="line">                    <span class="attr">&quot;description&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Enable pretty-printing for gdb&quot;</span><span class="punctuation">,</span></span><br><span class="line">                    <span class="attr">&quot;text&quot;</span><span class="punctuation">:</span> <span class="string">&quot;-enable-pretty-printing&quot;</span><span class="punctuation">,</span></span><br><span class="line">                    <span class="attr">&quot;ignoreFailures&quot;</span><span class="punctuation">:</span> <span class="keyword">true</span></span><br><span class="line">                <span class="punctuation">&#125;</span></span><br><span class="line">            <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;preLaunchTask&quot;</span><span class="punctuation">:</span> <span class="string">&quot;build&quot;</span><span class="punctuation">,</span> </span><br><span class="line">            <span class="attr">&quot;windows&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;program&quot;</span><span class="punctuation">:</span> <span class="string">&quot;$&#123;fileDirname&#125;/$&#123;fileBasenameNoExtension&#125;.exe&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;miDebuggerPath&quot;</span><span class="punctuation">:</span> <span class="string">&quot;C:/Program Files/mingw64/bin/gdb.exe&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;osx&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;externalConsole&quot;</span><span class="punctuation">:</span> <span class="keyword">true</span></span><br><span class="line">            <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="2-3-2-18-复制完成后同时按【Ctrl】和【S】两个键，保存修改"><a href="#2-3-2-18-复制完成后同时按【Ctrl】和【S】两个键，保存修改" class="headerlink" title="2.3.2.18 复制完成后同时按【Ctrl】和【S】两个键，保存修改"></a>2.3.2.18 复制完成后同时按【Ctrl】和【S】两个键，保存修改</h5><p><img src="http://img.jinxinsong.cn/20201022200230.png" alt="20201022200230"></p>
+<h5 id="2-3-2-19-点击左下角齿轮图标"><a href="#2-3-2-19-点击左下角齿轮图标" class="headerlink" title="2.3.2.19 点击左下角齿轮图标"></a>2.3.2.19 点击左下角齿轮图标</h5><p><img src="http://img.jinxinsong.cn/20201022200310.png" alt="20201022200310"></p>
+<h5 id="2-3-2-20-点击键盘快捷方式"><a href="#2-3-2-20-点击键盘快捷方式" class="headerlink" title="2.3.2.20 点击键盘快捷方式"></a>2.3.2.20 点击键盘快捷方式</h5><p><img src="http://img.jinxinsong.cn/20201022200345.png" alt="20201022200345"></p>
+<h5 id="2-3-2-21-输入【tasks】，找到【任务-运行测试任务】，点前面的【-】号。"><a href="#2-3-2-21-输入【tasks】，找到【任务-运行测试任务】，点前面的【-】号。" class="headerlink" title="2.3.2.21 输入【tasks】，找到【任务:运行测试任务】，点前面的【+】号。"></a>2.3.2.21 输入【tasks】，找到【任务:运行测试任务】，点前面的【+】号。</h5><p><img src="http://img.jinxinsong.cn/20201022200518.png" alt="20201022200518"></p>
+<h5 id="2-3-2-22-按【F10】-一个括号里指一个键，下同-，再按回车"><a href="#2-3-2-22-按【F10】-一个括号里指一个键，下同-，再按回车" class="headerlink" title="2.3.2.22 按【F10】(一个括号里指一个键，下同)，再按回车"></a>2.3.2.22 按【F10】(一个括号里指一个键，下同)，再按回车</h5><p><img src="http://img.jinxinsong.cn/20201022200559.png" alt="20201022200559"></p>
+<h5 id="2-3-2-23-回到资源管理器"><a href="#2-3-2-23-回到资源管理器" class="headerlink" title="2.3.2.23 回到资源管理器"></a>2.3.2.23 回到资源管理器</h5><p><img src="http://img.jinxinsong.cn/20201022200630.png" alt="20201022200630"></p>
+<h5 id="2-3-2-24-在【-vscode】文件夹外建一个文件夹，名称随意-不能有中文，下同-【-vscode】文件夹从现在开始就不需要动了，不要在里面新建文件写东西"><a href="#2-3-2-24-在【-vscode】文件夹外建一个文件夹，名称随意-不能有中文，下同-【-vscode】文件夹从现在开始就不需要动了，不要在里面新建文件写东西" class="headerlink" title="2.3.2.24 在【.vscode】文件夹外建一个文件夹，名称随意(不能有中文，下同) (【.vscode】文件夹从现在开始就不需要动了，不要在里面新建文件写东西)"></a>2.3.2.24 在【.vscode】文件夹外建一个文件夹，名称随意(不能有中文，下同) (【.vscode】文件夹从现在开始就不需要动了，不要在里面新建文件写东西)</h5><p><img src="http://img.jinxinsong.cn/20201022200724.png" alt="20201022200724"></p>
+<h5 id="2-3-2-25-在新建的文件夹-我的是【test】-里新建一个C-文件-我命名为【test-cpp】"><a href="#2-3-2-25-在新建的文件夹-我的是【test】-里新建一个C-文件-我命名为【test-cpp】" class="headerlink" title="2.3.2.25 在新建的文件夹(我的是【test】)里新建一个C++文件(我命名为【test.cpp】)"></a>2.3.2.25 在新建的文件夹(我的是【test】)里新建一个C++文件(我命名为【test.cpp】)</h5><p><img src="http://img.jinxinsong.cn/20201022200818.png" alt="20201022200818"></p>
+<h5 id="2-3-2-26-随便写一段代码-输入-a-b，输出-a-b-的值-。"><a href="#2-3-2-26-随便写一段代码-输入-a-b，输出-a-b-的值-。" class="headerlink" title="2.3.2.26 随便写一段代码(输入 a,b，输出 a+b 的值)。"></a>2.3.2.26 随便写一段代码(输入 a,b，输出 a+b 的值)。</h5><p><img src="http://img.jinxinsong.cn/20201022200914.png" alt="20201022200914"></p>
+<h5 id="2-3-2-27-按【F10】编译运行程序。不会弹出黑框，终端运行集成在软件中-红-框-。至此配置完成。"><a href="#2-3-2-27-按【F10】编译运行程序。不会弹出黑框，终端运行集成在软件中-红-框-。至此配置完成。" class="headerlink" title="2.3.2.27 按【F10】编译运行程序。不会弹出黑框，终端运行集成在软件中(红 框)。至此配置完成。"></a>2.3.2.27 按【F10】编译运行程序。不会弹出黑框，终端运行集成在软件中(红 框)。至此配置完成。</h5><p><img src="http://img.jinxinsong.cn/20201022200956.png" alt="20201022200956"></p>
+<h3 id="2-4-VSCode-中的调试功能"><a href="#2-4-VSCode-中的调试功能" class="headerlink" title="2.4 VSCode 中的调试功能"></a>2.4 VSCode 中的调试功能</h3><h4 id="2-4-1-设置断点，在行号前点一下即可。"><a href="#2-4-1-设置断点，在行号前点一下即可。" class="headerlink" title="2.4.1 设置断点，在行号前点一下即可。"></a>2.4.1 设置断点，在行号前点一下即可。</h4><p><img src="http://img.jinxinsong.cn/20201022201052.png" alt="20201022201052"></p>
+<h4 id="2-4-2-调试运行，先点蓝框图标，再点红框图标进行调试运行。"><a href="#2-4-2-调试运行，先点蓝框图标，再点红框图标进行调试运行。" class="headerlink" title="2.4.2 调试运行，先点蓝框图标，再点红框图标进行调试运行。"></a>2.4.2 调试运行，先点蓝框图标，再点红框图标进行调试运行。</h4><p><img src="http://img.jinxinsong.cn/20201022201127.png" alt="20201022201127"></p>
+<h4 id="2-4-3-红框是调试工具栏，蓝框中显示调试的数值信息，绿框为终端进行输入。"><a href="#2-4-3-红框是调试工具栏，蓝框中显示调试的数值信息，绿框为终端进行输入。" class="headerlink" title="2.4.3 红框是调试工具栏，蓝框中显示调试的数值信息，绿框为终端进行输入。"></a>2.4.3 红框是调试工具栏，蓝框中显示调试的数值信息，绿框为终端进行输入。</h4><p><img src="http://img.jinxinsong.cn/20201022201205.png" alt="20201022201205"></p>
+<h4 id="2-4-4-调试功能要求路径不能有中文名，即存放文件的文件夹，包括文件夹的上-层文件夹，上上层文件夹等等等等，一旦其中一个文件夹有中文名，则调试功能-会报错无法使用，这是已知-bug，在微软未修复之前只能注意避免。"><a href="#2-4-4-调试功能要求路径不能有中文名，即存放文件的文件夹，包括文件夹的上-层文件夹，上上层文件夹等等等等，一旦其中一个文件夹有中文名，则调试功能-会报错无法使用，这是已知-bug，在微软未修复之前只能注意避免。" class="headerlink" title="2.4.4 调试功能要求路径不能有中文名，即存放文件的文件夹，包括文件夹的上 层文件夹，上上层文件夹等等等等，一旦其中一个文件夹有中文名，则调试功能 会报错无法使用，这是已知 bug，在微软未修复之前只能注意避免。"></a>2.4.4 调试功能要求路径不能有中文名，即存放文件的文件夹，包括文件夹的上 层文件夹，上上层文件夹等等等等，一旦其中一个文件夹有中文名，则调试功能 会报错无法使用，这是已知 bug，在微软未修复之前只能注意避免。</h4>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请作者喝杯肥宅快乐水?</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="一刻陈杉 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.png" alt="一刻陈杉 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>原作者： </strong>origincat
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://yikechenshan.github.io/vscode_cpp_zero_based/" title="VSCode的C++环境基础配置【零基础版】">http://yikechenshan.github.io/vscode_cpp_zero_based/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-ND</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/c/" rel="tag"># c++</a>
+              <a href="/tags/vscode/" rel="tag"># vscode</a>
+              <a href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag"># 工具</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/windows_unzip_soft/" rel="prev" title="解压缩软件的选择与安装【零基础版】">
+                  <i class="fa fa-chevron-left"></i> 解压缩软件的选择与安装【零基础版】
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/Lenovo_m73_MacOS_BCM94352HMB/" rel="next" title="联想M73黑苹果Big Sur使用BCM94352HMB网卡的蓝牙问题">
+                  联想M73黑苹果Big Sur使用BCM94352HMB网卡的蓝牙问题 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">一刻陈杉</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>
