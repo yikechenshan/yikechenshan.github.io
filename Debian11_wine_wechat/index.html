@@ -20,19 +20,22 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"origcat.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="纯属苦难哲学。不是教程，只是记录，所以不想写太多。QQ版本：9.5.9；微信版本：3.6.0.18；wine版本：5.0.3；使用kde桌面。个人测试基本可用。">
+    <meta name="description" content="纯属苦难哲学。不是教程，只是记录，所以不想写太多。（后面想了想还是补了不少内容）（背景是移植的deepinwine的QQ和TIM闪&#x2F;卡退无法使用，同时每次启动都会重置wine容器的配置文件，所以自己折腾了一下原版wine安装微信和QQ）QQ版本：9.5.9；微信版本：3.6.0.18；wine版本：5.0.3；使用kde桌面。个人测试基本可用。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Debian11基于wine安装微信和QQ">
 <meta property="og:url" content="http://origcat.github.io/Debian11_wine_wechat/index.html">
 <meta property="og:site_name" content="某平凡的博客">
-<meta property="og:description" content="纯属苦难哲学。不是教程，只是记录，所以不想写太多。QQ版本：9.5.9；微信版本：3.6.0.18；wine版本：5.0.3；使用kde桌面。个人测试基本可用。">
+<meta property="og:description" content="纯属苦难哲学。不是教程，只是记录，所以不想写太多。（后面想了想还是补了不少内容）（背景是移植的deepinwine的QQ和TIM闪&#x2F;卡退无法使用，同时每次启动都会重置wine容器的配置文件，所以自己折腾了一下原版wine安装微信和QQ）QQ版本：9.5.9；微信版本：3.6.0.18；wine版本：5.0.3；使用kde桌面。个人测试基本可用。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://origcat.github.io/Debian11_wine_wechat/2022-03-29-11-52-20.png">
+<meta property="og:image" content="http://origcat.github.io/Debian11_wine_wechat/2022-03-29-11-32-31.png">
 <meta property="article:published_time" content="2022-03-27T08:46:48.000Z">
-<meta property="article:modified_time" content="2022-03-29T02:52:23.054Z">
+<meta property="article:modified_time" content="2022-03-29T04:32:44.481Z">
 <meta property="article:author" content="origcat">
 <meta property="article:tag" content="Debian">
 <meta property="article:tag" content="wine">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://origcat.github.io/Debian11_wine_wechat/2022-03-29-11-52-20.png">
 
 
 <link rel="canonical" href="http://origcat.github.io/Debian11_wine_wechat/">
@@ -104,7 +107,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -117,6 +120,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E7%BD%AE"><span class="nav-number">1.</span> <span class="nav-text">前置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">2.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85wine"><span class="nav-number">2.1.</span> <span class="nav-text">安装wine</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%AE%B9%E5%99%A8"><span class="nav-number">2.2.</span> <span class="nav-text">创建容器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E5%BE%AE%E4%BF%A1"><span class="nav-number">2.3.</span> <span class="nav-text">安装微信</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%90%AF%E5%8A%A8%E8%84%9A%E6%9C%AC"><span class="nav-number">2.4.</span> <span class="nav-text">创建启动脚本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%90%AF%E5%8A%A8%E5%9B%BE%E6%A0%87"><span class="nav-number">2.5.</span> <span class="nav-text">创建启动图标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QQ"><span class="nav-number">2.6.</span> <span class="nav-text">QQ</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E4%BF%AE%E5%A4%8D"><span class="nav-number">3.</span> <span class="nav-text">问题修复</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A1%86%E6%97%A0%E6%B3%95%E9%A2%84%E8%A7%88%E9%80%89%E4%B8%AD"><span class="nav-number">3.1.</span> <span class="nav-text">输入框无法预览选中</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QQ%E6%97%A0%E6%B3%95%E5%8A%A0%E8%BD%BD%E5%9B%BE%E7%89%87"><span class="nav-number">3.2.</span> <span class="nav-text">QQ无法加载图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%91%E9%83%A8%E5%88%86%E4%B9%B1%E7%A0%81%E5%AD%97%E4%BD%93%E4%BB%A5%E5%8F%8A%E6%94%B9%E5%96%84%E4%B8%AD%E6%96%87%E6%98%BE%E7%A4%BA%E6%95%88%E6%9E%9C"><span class="nav-number">3.3.</span> <span class="nav-text">少部分乱码字体以及改善中文显示效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AA%E8%A7%A3%E5%86%B3"><span class="nav-number">3.4.</span> <span class="nav-text">未解决</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%8C%E5%B7%A5%E6%88%AA%E5%9B%BE"><span class="nav-number">4.</span> <span class="nav-text">完工截图</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -228,7 +232,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-03-29 10:52:23" itemprop="dateModified" datetime="2022-03-29T10:52:23+08:00">2022-03-29</time>
+      <time title="修改时间：2022-03-29 12:32:44" itemprop="dateModified" datetime="2022-03-29T12:32:44+08:00">2022-03-29</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -261,36 +265,45 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>纯属苦难哲学。不是教程，只是记录，所以不想写太多。QQ版本：9.5.9；微信版本：3.6.0.18；wine版本：5.0.3；使用kde桌面。个人测试基本可用。</p>
+        <p>纯属苦难哲学。<del>不是教程，只是记录，所以不想写太多。</del>（后面想了想还是补了不少内容）（背景是移植的deepinwine的QQ和TIM闪&#x2F;卡退无法使用，同时每次启动都会重置wine容器的配置文件，所以自己折腾了一下原版wine安装微信和QQ）QQ版本：9.5.9；微信版本：3.6.0.18；wine版本：5.0.3；使用kde桌面。个人测试基本可用。</p>
 <span id="more"></span>
 
-<p>开启32位支持</p>
-<p>安装wine</p>
-<p>创建wine容器并进行简单配置，需要提前创建好文件夹</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WINEPREFIX=<span class="string">&quot;/home/chen/Wine/.wine/wechat&quot;</span> wine winecfg</span><br></pre></td></tr></table></figure>
+<h1 id="前置"><a href="#前置" class="headerlink" title="前置"></a>前置</h1><p>开启32位支持<a target="_blank" rel="noopener" href="https://www.cnblogs.com/welhzh/p/4704149.html">参考文章</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#开启32位支持</span></span><br><span class="line">sudo dpkg --add-architecture i386</span><br><span class="line">sudo apt update</span><br><span class="line">sudo apt upgrade</span><br></pre></td></tr></table></figure>
 
-<p>安装微信</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WINEPREFIX=<span class="string">&quot;/home/chen/Wine/.wine/wechat&quot;</span> wine ./Downloads/WeChatSetup.exe </span><br></pre></td></tr></table></figure>
+<p>下载微信和QQ的windows版安装包</p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p><a target="_blank" rel="noopener" href="https://github.com/zq1997/deepin-wine/issues/230">主要参考内容</a></p>
+<h2 id="安装wine"><a href="#安装wine" class="headerlink" title="安装wine"></a>安装wine</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install wine</span><br></pre></td></tr></table></figure>
 
-<p>创建启动脚本runwechat.sh</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/user/bin/env bash</span></span><br><span class="line"></span><br><span class="line">WINEPREFIX=<span class="string">&quot;/home/chen/Wine/.wine/wechat&quot;</span> wine /home/chen/Wine/.wine/wechat/drive_c/Program\ Files/WeChat/WeChat.ext</span><br></pre></td></tr></table></figure>
+<h2 id="创建容器"><a href="#创建容器" class="headerlink" title="创建容器"></a>创建容器</h2><p>创建wine容器并进行简单配置，需要提前创建好文件夹”~&#x2F;Wine&#x2F;.win&#x2F;wechat”，可以改成你喜欢的其他路径，自己看着办吧，这里改其他路径记得后面也同步改了就行。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &quot;/home/chen&quot;替换为自己的用户文件夹路径</span></span><br><span class="line"><span class="comment"># 也可以将&quot;/Wine/.wine/wechat&quot;替换为自己喜欢的路径</span></span><br><span class="line"><span class="comment"># 甚至可以不放在当前用户的用户文件夹下（不推荐）</span></span><br><span class="line">WINEPREFIX=<span class="string">&quot;/home/chen/Wine/.wine/wechat&quot;</span> wine winecfg</span><br></pre></td></tr></table></figure>
 
-<p>创建启动图标</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/env xdg-open </span></span><br><span class="line"> </span><br><span class="line">[Desktop Entry] </span><br><span class="line">Encoding=UTF-8 </span><br><span class="line">Type=Application </span><br><span class="line">X-Created-By=Deepin WINE Team </span><br><span class="line">Categories=chat; </span><br><span class="line">Icon=com.qq.weixin.deepin </span><br><span class="line">Exec=<span class="string">&quot;/home/chen/.local/bin/runwechat.sh&quot;</span> </span><br><span class="line">Name=WeChat</span><br><span class="line">Name[zh_CN]=微信</span><br><span class="line">Comment=Tencent WeChat Client on Deepin Wine</span><br><span class="line">StartupWMClass=WeChat.exe</span><br><span class="line">MimeType=</span><br></pre></td></tr></table></figure>
+<p>应用程序里选择windows7，显示里改为如下配置（屏幕分辨率主要是调节缩放，我是1080P的屏幕，缩放125%就够了，如果你是更高分辨率的屏幕，或者你觉得大小不舒服，请自行调节至你觉得合适的大小）</p>
+<p><img src="/Debian11_wine_wechat/2022-03-29-11-52-20.png"></p>
+<h2 id="安装微信"><a href="#安装微信" class="headerlink" title="安装微信"></a>安装微信</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &quot;/home/chen/Wine/.wine/wechat&quot;替换为自己的wine容器路径</span></span><br><span class="line"><span class="comment"># &quot;./Downloads/WeChatSetup.exe&quot;替换为自己下载的微信安装包存放路径</span></span><br><span class="line">WINEPREFIX=<span class="string">&quot;/home/chen/Wine/.wine/wechat&quot;</span> wine ./Downloads/WeChatSetup.exe</span><br></pre></td></tr></table></figure>
 
-<p>QQ与微信同理</p>
-<p>修复输入框无法预览选中</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install winetricks</span><br><span class="line">WINEPREFIX=<span class="string">&quot;/home/chen/Wine/.wine/wechat&quot;</span> winetricks riched20</span><br></pre></td></tr></table></figure>
+<p>可以选择安装路径，后面的微信启动脚本里的程序路径就是你现在选的安装路径</p>
+<h2 id="创建启动脚本"><a href="#创建启动脚本" class="headerlink" title="创建启动脚本"></a>创建启动脚本</h2><p>在”~&#x2F;.locak&#x2F;bin&#x2F;“文件夹下创建runwechat.sh文件，写入以下内容</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/user/bin/env bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># &quot;/home/chen/Wine/.wine/wechat&quot;替换为自己的wine容器路径</span></span><br><span class="line"><span class="comment"># &quot;/Program\ Files/WeChat/WeChat.exe&quot;替换为自己微信安装路径</span></span><br><span class="line"><span class="comment"># &quot;/drive_c&quot;即wine容器中的C盘</span></span><br><span class="line"><span class="comment"># &quot;不确定路径可以在debian中找到WeChat.exe&quot;文件在哪，反正肯定在你wine容器文件夹里</span></span><br><span class="line">WINEPREFIX=<span class="string">&quot;/home/chen/Wine/.wine/wechat&quot;</span> wine /home/chen/Wine/.wine/wechat/drive_c/Program\ Files/WeChat/WeChat.exe</span><br></pre></td></tr></table></figure>
 
-<p>文件下载不下来就复制链接下载然后放进对应的临时文件夹</p>
-<p>修复QQ无法加载图片：安装privoxy走代理</p>
-<p>修复少部分乱码字体以及改善中文显示效果：微软雅黑伪装宋体放入wine容器字体文件夹。<a target="_blank" rel="noopener" href="https://bbs.deepin.org/zh/post/213530">原文地址</a></p>
-<p>未解决：</p>
-<ol>
+<h2 id="创建启动图标"><a href="#创建启动图标" class="headerlink" title="创建启动图标"></a>创建启动图标</h2><p>在”~&#x2F;.local&#x2F;share&#x2F;applications&#x2F;“文件夹中创建”wechat.desktop”文件，写入：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/env xdg-open </span></span><br><span class="line"> </span><br><span class="line">[Desktop Entry] </span><br><span class="line">Encoding=UTF-8 </span><br><span class="line">Type=Application </span><br><span class="line">X-Created-By=Deepin WINE Team </span><br><span class="line">Categories=chat; </span><br><span class="line">Icon=com.qq.weixin.deepin</span><br><span class="line"><span class="comment"># &quot;/home/chen&quot;替换为自己的用户文件夹路径</span></span><br><span class="line">Exec=<span class="string">&quot;/home/chen/.local/bin/runwechat.sh&quot;</span> </span><br><span class="line">Name=WeChat</span><br><span class="line">Name[zh_CN]=微信</span><br><span class="line">Comment=Tencent WeChat Client on Deepin Wine</span><br><span class="line">StartupWMClass=WeChat.exe</span><br><span class="line">MimeType=</span><br></pre></td></tr></table></figure>
+
+<h2 id="QQ"><a href="#QQ" class="headerlink" title="QQ"></a>QQ</h2><p>与微信同，不再赘述。</p>
+<h1 id="问题修复"><a href="#问题修复" class="headerlink" title="问题修复"></a>问题修复</h1><h2 id="输入框无法预览选中"><a href="#输入框无法预览选中" class="headerlink" title="输入框无法预览选中"></a>输入框无法预览选中</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install winetricks</span><br><span class="line">WINEPREFIX=<span class="string">&quot;/home/chen/Wine/.wine/wechat&quot;</span> winetricks riched20</span><br></pre></td></tr></table></figure>
+
+<p>文件下载不下来就复制链接在浏览器下载然后放进对应的临时文件夹，具体操作和文件：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43943298/article/details/111145895">参考文章</a></p>
+<p><strong>注：原文没提到两个文件要放入两个不同的文件夹下</strong></p>
+<p>将W2KSP4_EN.exe放入”~&#x2F;.cache&#x2F;winetricks&#x2F;win2ksp4&#x2F;“文件夹下</p>
+<p>将InstMsiW.exe放入”~&#x2F;.cache&#x2F;winetricks&#x2F;msls31&#x2F;“文件夹下</p>
+<h2 id="QQ无法加载图片"><a href="#QQ无法加载图片" class="headerlink" title="QQ无法加载图片"></a>QQ无法加载图片</h2><p>安装privoxy走代理，具体操作：<a target="_blank" rel="noopener" href="https://www.qedev.com/linux/341081.html">参考文章</a></p>
+<h2 id="少部分乱码字体以及改善中文显示效果"><a href="#少部分乱码字体以及改善中文显示效果" class="headerlink" title="少部分乱码字体以及改善中文显示效果"></a>少部分乱码字体以及改善中文显示效果</h2><p>微软雅黑伪装宋体放入wine容器字体文件夹，具体操作和文件：<a target="_blank" rel="noopener" href="https://bbs.deepin.org/zh/post/213530">参考文章</a></p>
+<h2 id="未解决"><a href="#未解决" class="headerlink" title="未解决"></a>未解决</h2><ol>
 <li>微信窗口被覆盖显示阴影（不用就叉掉或者最小化就好）</li>
 <li>偶发wine弹出程序崩溃报错（但其实没崩，叉掉报错就行）</li>
 <li>刚安装后启动不在状态栏显示小图标（重启一次即可）</li>
 </ol>
+<h1 id="完工截图"><a href="#完工截图" class="headerlink" title="完工截图"></a>完工截图</h1><p><img src="/Debian11_wine_wechat/2022-03-29-11-32-31.png"></p>
 
     </div>
 
