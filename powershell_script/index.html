@@ -103,7 +103,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -116,6 +116,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A3%B0%E6%98%8E"><span class="nav-number">1.</span> <span class="nav-text">声明:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%AD%A3%E6%96%87"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -259,7 +260,13 @@
         <p>这也没啥好说的，又是搭hexo的时候遇到的坑，那时候还在用windows，不过不得不说，windows日常使用太香了。</p>
 <span id="more"></span>
 
-<p>在powershell里使用nrm，hexo之类的提示无法运行脚本，解决方法如下：</p>
+<h1 id="声明"><a href="#声明" class="headerlink" title="声明:"></a>声明:</h1><blockquote>
+<p>本文档的一切内容均为本地测试结果，受限于本人知识与能力，仅供参考，如因参照本文档操作而发生任何问题，无论是否严格参照本文档操作，请恕本人概不负责。</p>
+</blockquote>
+<blockquote>
+<p>文档中的任何观点受限于本人知识、能力及眼界，不保证理智，公正，客观。如本文档中观点与您相左，以您的意见为准。</p>
+</blockquote>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><p>在powershell里使用nrm，hexo之类的提示无法运行脚本，解决方法如下：</p>
 <p>在powershell里运行：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set-executionpolicy remotesigned</span><br></pre></td></tr></table></figure>
 
