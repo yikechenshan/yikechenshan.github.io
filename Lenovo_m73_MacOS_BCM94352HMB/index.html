@@ -120,7 +120,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B5%B7%E5%9B%A0"><span class="nav-number">1.</span> <span class="nav-text">起因</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3"><span class="nav-number">2.</span> <span class="nav-text">解决</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%80%E5%90%8E"><span class="nav-number">3.</span> <span class="nav-text">最后</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A3%B0%E6%98%8E"><span class="nav-number">1.</span> <span class="nav-text">声明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B5%B7%E5%9B%A0"><span class="nav-number">2.</span> <span class="nav-text">起因</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3"><span class="nav-number">3.</span> <span class="nav-text">解决</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%80%E5%90%8E"><span class="nav-number">4.</span> <span class="nav-text">最后</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -264,6 +264,12 @@
         <p>所以说不要轻易被种草，以及安安心心windows它不香？算是黑果入坑机了，解决方法也简单，换个驱动的事。</p>
 <span id="more"></span>
 
+<h1 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h1><blockquote>
+<p>本文档的一切内容均为本地测试结果，受限于本人知识与能力，仅供参考，如因参照本文档操作而发生任何问题，无论是否严格参照本文档操作，请恕本人概不负责。</p>
+</blockquote>
+<blockquote>
+<p>文档中的任何观点受限于本人知识、能力及眼界，不保证理智，公正，客观。如本文档中观点与您相左，以您的意见为准。</p>
+</blockquote>
 <h1 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h1><p>最初的起因是因为关注了B站UP主司波图大佬，然后被种草联想M73小主机来做黑苹果。使用了第二版的EFI，macOS Catalina基本使用无问题，自己改了3G显存（我插了16G的内存条，所以想着显存能大就大点）。然后由于我的作死之魂尚未熄灭，升级了Big Sur，由于我不知道的原因，司波图大佬的EFI无法引导Big Sur，然后我查到一篇博客，博主用的远景论坛的某大佬的EFI成功引导Big Sur，本来也没啥事了，直到前两天我咸鱼淘了块BCM94352HMB网卡，今天到货了，破解网卡白名单（再次感谢司波图大佬的破解白名单教程）后，wifi可以使用，但是蓝牙无法使用，使用windows测试之后，发现网卡的蓝牙无问题，所以就只能是黑果配置的问题了。</p>
 <h1 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h1><p>对于玩黑果来说，我是个纯小白，前面两次都是直接拿的现成的两位大佬的EFI，所以为了这事也查了不少东西，最后在远景论坛的大佬的原帖看到他使用的是intel的网卡，我又查了黑果如何驱动BCM94352HMB网卡的蓝牙，以及对比两位大佬的EFI（司波图大佬使用的是同款博通网卡），最后得以解决。</p>
 <p>以下在远景论坛的大佬的EFI上进行修改。</p>
