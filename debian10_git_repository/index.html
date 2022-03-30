@@ -118,7 +118,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%88%9B%E5%BB%BAgit%E7%94%A8%E6%88%B7%E5%B9%B6%E9%85%8D%E7%BD%AEssh"><span class="nav-number">1.</span> <span class="nav-text">服务器创建git用户并配置ssh</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%A6%81%E6%AD%A2git%E7%94%A8%E6%88%B7%E4%BD%BF%E7%94%A8shell"><span class="nav-number">2.</span> <span class="nav-text">服务器禁止git用户使用shell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%88%9B%E5%BB%BA%E4%BB%93%E5%BA%93%E5%B9%B6%E5%B0%86%E4%BB%93%E5%BA%93%E6%9D%83%E9%99%90%E7%BB%99git"><span class="nav-number">3.</span> <span class="nav-text">服务器创建仓库并将仓库权限给git</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E6%8B%89%E5%8F%96git%E4%BB%93%E5%BA%93"><span class="nav-number">4.</span> <span class="nav-text">本地拉取git仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B2%A1%E4%BA%86"><span class="nav-number">5.</span> <span class="nav-text">没了</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7"><span class="nav-number">1.</span> <span class="nav-text">创建用户</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">用户配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E4%BB%93%E5%BA%93"><span class="nav-number">3.</span> <span class="nav-text">创建仓库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95"><span class="nav-number">4.</span> <span class="nav-text">测试</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B2%A1%E4%BA%86"><span class="nav-number">5.</span> <span class="nav-text">没了</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -266,20 +266,24 @@
         <p>怎么说呢，整这个是为了搭hexo，不过后来想想，我都有服务器了，为啥还要用hexo？typecho，wordpress它不香？如果只是搭hexo，github它不香？啥都不管直接https，自己整个域名还得续费。</p>
 <span id="more"></span>
 
-<h3 id="服务器创建git用户并配置ssh"><a href="#服务器创建git用户并配置ssh" class="headerlink" title="服务器创建git用户并配置ssh"></a>服务器创建git用户并配置ssh</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sudo adduser git</span><br><span class="line">su git</span><br><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line"><span class="built_in">mkdir</span> .ssh</span><br><span class="line"><span class="built_in">cd</span> .ssh</span><br><span class="line"><span class="built_in">mkdir</span> authorized_keys</span><br><span class="line">vim authorized_keys</span><br></pre></td></tr></table></figure>
+<h1 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h1><p>服务器创建git用户并配置ssh</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sudo adduser git</span><br><span class="line">su git</span><br><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line"><span class="built_in">mkdir</span> .ssh</span><br><span class="line"><span class="built_in">cd</span> .ssh</span><br><span class="line"><span class="built_in">mkdir</span> authorized_keys</span><br><span class="line">vim authorized_keys</span><br></pre></td></tr></table></figure>
 <p>添加一行本地ssh密钥</p>
 <p>一般存储在[ ～&#x2F;.ssh ]文件夹内</p>
 <p>将其中的id_rsa.pub里的内容粘贴进去</p>
 <p>多台本地机器一样的操作</p>
 <p>一行一个</p>
-<h3 id="服务器禁止git用户使用shell"><a href="#服务器禁止git用户使用shell" class="headerlink" title="服务器禁止git用户使用shell"></a>服务器禁止git用户使用shell</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/passwd</span><br></pre></td></tr></table></figure>
+<h1 id="用户配置"><a href="#用户配置" class="headerlink" title="用户配置"></a>用户配置</h1><p>服务器禁止git用户使用shell</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/passwd</span><br></pre></td></tr></table></figure>
 <p>将git那一行最后的&#x2F;bin&#x2F;bash改为&#x2F;usr&#x2F;bin&#x2F;git-shell</p>
-<h3 id="服务器创建仓库并将仓库权限给git"><a href="#服务器创建仓库并将仓库权限给git" class="headerlink" title="服务器创建仓库并将仓库权限给git"></a>服务器创建仓库并将仓库权限给git</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> example.git</span><br><span class="line">sudo git init --bare example.git</span><br><span class="line">sudo <span class="built_in">chown</span> -R git:git example.git</span><br></pre></td></tr></table></figure>
+<h1 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h1><p>服务器创建仓库并将仓库权限给git</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> example.git</span><br><span class="line">sudo git init --bare example.git</span><br><span class="line">sudo <span class="built_in">chown</span> -R git:git example.git</span><br></pre></td></tr></table></figure>
 
-<h3 id="本地拉取git仓库"><a href="#本地拉取git仓库" class="headerlink" title="本地拉取git仓库"></a>本地拉取git仓库</h3><p>这就是正常git操作了</p>
+<h1 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h1><p>本地拉取git仓库</p>
+<p>这就是正常git操作了</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> git@192.168.0.1:/home/haha/example.git</span><br></pre></td></tr></table></figure>
 <p>PS：将IP地址和仓库路径换成自己的</p>
-<h3 id="没了"><a href="#没了" class="headerlink" title="没了"></a>没了</h3>
+<h1 id="没了"><a href="#没了" class="headerlink" title="没了"></a>没了</h1>
     </div>
 
     
